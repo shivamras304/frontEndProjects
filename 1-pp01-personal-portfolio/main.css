@@ -1,0 +1,58 @@
+.navbar {
+  background-color: #0D47A1;
+  text-transform: uppercase;
+  padding: 10px;
+}
+.navbar-header a, .nav li a {
+  color: white !important;
+}
+.navbar-header a:hover {
+  color: #90CAF9 !important;
+}
+.nav li a:hover{
+  color: #90CAF9 !important;
+  box-shadow:  3px 3px 5px -4px rgba(0,0,0,1), -3px 0 5px -4px rgba(0,0,0,1);
+}
+.nav li a:focus {
+  background-color: white !important;
+  color: #0D47A1 !important;
+  font-weight: 500;
+  border-radius: 4px;
+}
+.navbar-header {
+  font-weight: 500;
+}
+.main {
+  margin-top: 100px;
+}
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  margin: 0 auto;
+  border: black solid 2px;
+}
+.profile-pic img {
+  height: auto;
+  width: 250px;
+  border: black solid 2px;
+
+}
+.portfolio-pic {
+  width: 420px;
+  height: 280px;
+  overflow: hidden;
+  margin: 0 auto;
+  border: black solid 2px;
+}
+.portfolio-img img {
+  width: 420px;
+  height: auto;
+  border: black solid 2px;
+}
+.footer {
+  background-color: blue;
+}
+input {
+  display: block;
+}
