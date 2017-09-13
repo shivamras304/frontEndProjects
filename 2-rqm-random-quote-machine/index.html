@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Random Quotes</title>
+  <link rel="stylesheet" href="main.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+  <div class="container clearfix">
+      <div class="quote clearfix">
+          <!-- <p class="quote-text">I have never killed anyone, but I have read some obituary notices with great satisfaction.</p>
+          <p class="quote-author">- <span class="author-name">Clarence Darrow</span></p> -->
+          <p class="quote-text"></p>
+          <p class="quote-author">- <span class="author-name"></span></p>
+
+      </div>
+
+      <a href="" class="share share-twitter"></a>
+      <a href="" class="share share-tumblr"></a>
+      <a href="" class="new-quote">New Quote</a>
+  </div>
+  <p class="dev-name">by Shivam Rastogi</p>
+
+  <script type="text/javascript">
+    function getRandomQuote() {
+      $.ajax({
+        headers: {
+          "X-Mashape-Key": "4mBkdThZUUmshvifvKSnqm506LIqp1fOMlSjsnmexNsAhO5ZAG",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Accept": "application/json"
+        },
+        url: "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=movies&count=1",
+        success: function(data) {
+          $(".quote-text").text(data.quote);
+          $(".quote-author").text(data.author);
+        },
+        error: function(_, status, errorMsg) {
+          $(".quote-text").text(("" + status + ": " + errorMsg).toUpperCase());
+        }
+      });
+    }
+
+    $(document).ready(function() {
+      getRandomQuote();
+
+      $(".new-quote").click(getRandomQuote);
+    });
+  </script>
+
+</body>
+
+</html>
