@@ -1,132 +1,150 @@
 :root {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 @media screen and (max-width: 950px) {
-    :root {
-        font-size: 8px;
-    }
+   :root {
+    font-size: 8px;
+  }
 }
 
 @media screen and (max-width: 550px) {
-    :root {
-        font-size: 6px;
-    }
+   :root {
+    font-size: 6px;
+  }
 }
 
+.bg-color-random {}
+
+.color-random {}
+
 body {
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    background-color: lightseagreen;
-    transition: all 2s ease-in-out;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  background-color: #333;
+  color: #333;
 }
 
 .container {
-    margin: 16rem auto 0 auto;
-    width: 55rem;
-    padding: 3em 5em;
-    background-color: #eee;
-    border-radius: 0.3em;
+  margin: 16rem auto 0 auto;
+  width: 55rem;
+  padding: 3em 5em;
+  background-color: #eee;
+  border-radius: 0.3em;
 }
+
 .quote {
-    color: lightseagreen;
-    margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
 .quote-text::before {
-    /*content: '"';*/
-    /*font-size: 32px;*/
-    /*display: inline-block;*/
+  /*content: '"';*/
+  /*font-size: 32px;*/
+  /*display: inline-block;*/
 }
 
 .quote-text {
-    font-size: 2.4rem;
-    margin-bottom: 0.83333333em;
+  font-size: 2.4rem;
+  margin-bottom: 0.83333333em;
 }
 
 .quote-author {
-    float: right;
-    font-size: 1.6rem;
-    margin: 0;
+  float: right;
+  font-size: 1.6rem;
+  margin: 0;
 }
 
-
 @media screen and (max-width: 950px) {
-    .quote-text {
-        font-size: 3rem;
-    }
-
-    .quote-author {
-        font-size: 2rem;
-    }
+  .quote-text {
+    font-size: 3rem;
+  }
+  .quote-author {
+    font-size: 2rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
-    .quote-text {
-        font-size: 4rem;
-    }
-
-    .quote-author {
-        font-size: 2.66666667rem;
-    }
+  .quote-text {
+    font-size: 4rem;
+  }
+  .quote-author {
+    font-size: 2.66666667rem;
+  }
 }
 
+
 /*.share {*/
-    /*float: left;*/
-    /*width: 4rem;*/
-    /*height: 4rem;*/
-    /*background-color: lightseagreen;*/
-    /*margin-right: 1em;*/
-    /*border-radius: 0.3em;*/
-    /*color: #eee;*/
+
+
+/*float: left;*/
+
+
+/*width: 4rem;*/
+
+
+/*height: 4rem;*/
+
+
+/*margin-right: 1em;*/
+
+
+/*border-radius: 0.3em;*/
+
+
+/*color: #eee;*/
+
+
 /*}*/
 
 .new-quote {
-    height: 4rem;
-    line-height: 4rem;
-    font-size: 1.6rem;
-    text-decoration: none;
-    box-sizing: border-box;
-    padding: 0 2em;
-    background-color: lightseagreen;
-    color: #eee;
-    float: right;
-    border-radius: 0.3em;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 1.6rem;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 0 2em;
+  color: #eee;
+  float: right;
+  border-radius: 0.3em;
 }
 
 .share {
-    float: left;
-    width: 4rem;
-    height: 4rem;
-    padding: 0.5em;
-    box-sizing: border-box;
-    margin-right: 1em;
-    border-radius: 0.3em;
-    color: #eee;
+  float: left;
+  width: 4rem;
+  height: 4rem;
+  padding: 0.5em;
+  box-sizing: border-box;
+  margin-right: 1em;
+  border-radius: 0.3em;
+  color: #eee;
 }
 
 .share-twitter {
-    background: lightseagreen url("twitter-logo.svg") no-repeat center;
-    background-size: 60% 60%;
+  background-image: url("twitter-logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60% 60%;
 }
 
 .share-tumblr {
-    background: lightseagreen url("tumblr-logo.svg") no-repeat center;
-    background-size: 60% 60%;
+  background-image: url("tumblr-logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60% 60%;
 }
 
 a:hover {
-    transition: opacity 300ms ease-in-out;
-    opacity: 0.8;
+  transition: opacity 300ms ease-in-out;
+  opacity: 0.8;
 }
 
-.dev-name{
-    color: #eee;
-    font-size: 1.6rem;
+.dev-name {
+  color: #eee;
+  font-size: 1.6rem;
 }
 
 .clearfix::after, .clearfix::before {
-    content: "";
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
