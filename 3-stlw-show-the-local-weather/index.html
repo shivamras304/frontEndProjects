@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Show the local weather</title>
+
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="animated-weather-icons.css">
+  <link rel="stylesheet" href="main.css">
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+  <div id="outercontainer">
+
+    <div class="weather-header">
+      <div class="flex-container">
+        <span class="header-font">Free&nbsp;</span>
+        <span class="header-font">Code&nbsp;</span>
+        <span class="header-font">Camp</span>
+      </div>
+      <div class="flex-container">
+        <span class="header-font">Weather&nbsp;</span>
+        <span class="header-font">App</span>
+      </div>
+    </div>
+
+    <div class="weather-container">
+      <div id="weather-location" class="info-font">
+        <span id="weather-location-name">&nbsp;</span>, <span id="weather-location-country"></span>
+      </div>
+      <div id="weather-temp" class="info-font">
+        <span id="weather-temp-value">&nbsp;</span> &deg;<a id="weather-temp-unit">C</a>
+      </div>
+      <div id="weather-desc" class="info-font">&nbsp;</div>
+      <div id="weather-icon" class="info-font">&nbsp;</div>
+    </div>
+    <footer>Inspired by <a href="https://codepen.io/joshbader/full/EjXgqr/">joshbader</a></footer>
+
+    <script type="text/javascript" src="script.js">
+
+    </script>
+
+</body>
+
+</html>

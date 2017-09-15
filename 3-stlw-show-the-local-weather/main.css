@@ -1,0 +1,76 @@
+:root {
+  font-size: 10px;
+}
+
+@media screen and (max-width: 400px) {
+  :root {
+    font-size: 6px;
+  }
+}
+
+body {
+  font-family: arial;
+}
+
+#outercontainer {
+  height: 100vh;
+  width: 100vw;
+  background-color: #161616;
+  color: #FFF;
+  padding: 5rem;
+  text-align: center;
+}
+
+.weather-header {
+  margin-bottom: 5rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-font {
+  font-size: 7rem;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 400px) {
+  .header-font {
+    font-size: 7rem;
+  }
+}
+
+.weather-container{
+  opacity: 0;
+}
+
+.info-font, .info-font a {
+  font-size: 3.4rem;
+  font-weight: 400;
+  margin-bottom: 2.8rem;
+}
+
+@media screen and (max-width: 400px) {
+  .info-font, .info-font a {
+    font-size: 5rem;
+    margin-bottom: 2.4rem;
+  }
+}
+
+span {
+  font-size: inherit;
+}
+
+footer, footer a {
+  font-size: 1.8rem;
+  margin-top: 5rem;
+}
+a {
+  color: #006DCC;
+}
+a:hover {
+  color: #214B70;
+}
