@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <title>Build a wikipedia viewer</title>
+</head>
+
+<body>
+
+  <div class="outer-container">
+    <div class="search-box-container">
+      <input id="search-wiki" type="text">
+      <label for="search-wiki">Search Wiki</label>
+      <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">I'm feeling lucky!</a>
+      <span id="cross"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </div>
+
+    <div class="hide search-result-container">
+    </div>
+  </div>
+
+  <script src="script.js">
+  </script>
+</body>
+
+</html>
