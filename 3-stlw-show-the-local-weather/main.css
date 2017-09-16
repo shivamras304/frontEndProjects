@@ -16,13 +16,14 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: #161616;
-  color: #FFF;
+  /*color: #FFF;*/
   padding: 5rem;
   text-align: center;
 }
 
 .weather-header {
   margin-bottom: 5rem;
+  color: #FFF;
 }
 
 .flex-container {
@@ -34,7 +35,7 @@ body {
 
 .header-font {
   font-size: 7rem;
-  font-weight: 500;
+  font-weight: 500
 }
 
 @media screen and (max-width: 400px) {
@@ -50,6 +51,7 @@ body {
 .info-font, .info-font a {
   font-size: 3.4rem;
   font-weight: 400;
+  color: #FFF;
   margin-bottom: 2.8rem;
 }
 
@@ -66,11 +68,20 @@ span {
 
 footer, footer a {
   font-size: 1.8rem;
+  color: #FFF;
   margin-top: 5rem;
 }
-a {
-  color: #006DCC;
+#weather-temp-unit, #outercontainer a {
+  color: #006DCC; !important
 }
-a:hover {
+#weather-temp-unit:hover, #outercontainer a:hover {
   color: #214B70;
+}
+
+/*#info-font {
+  display: none;
+}*/
+
+.hide {
+  display: none;
 }
