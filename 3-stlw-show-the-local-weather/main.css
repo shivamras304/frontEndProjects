@@ -1,7 +1,10 @@
 :root {
   font-size: 10px;
 }
-
+* {
+  margin: 0;
+  padding: 0;
+}
 @media screen and (max-width: 400px) {
   :root {
     font-size: 6px;
@@ -16,7 +19,6 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: #161616;
-  /*color: #FFF;*/
   padding: 5rem;
   text-align: center;
 }
@@ -66,16 +68,30 @@ span {
   font-size: inherit;
 }
 
-footer, footer a {
+footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 1.8rem;
   color: #FFF;
-  margin-top: 5rem;
+  margin-top: 15rem;
 }
+
+footer a {
+  font-size: 1.8rem;
+  color: #006DCC;
+}
+
 #weather-temp-unit, #outercontainer a {
   color: #006DCC; !important
 }
 #weather-temp-unit:hover, #outercontainer a:hover {
   color: #214B70;
+}
+
+#weather-icon {
+  position: relative;
 }
 
 /*#info-font {
