@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
-  // $("#search-wiki").on("blur", function() {
-  //   this.value = "";
-  // });
+  $("#search-wiki").on("blur", function() {
+    this.value = "";
+  });
 
   $("#cross").on("click", function() {
     // location.reload();
@@ -10,14 +10,14 @@ $(document).ready(function() {
     $(".search-result-container").html("");
     $("#cross").css("opacity", "0");
     $(".outer-container").animate({
-      top: "50%"
+      margin: "30vh auto"
     }, 300);
   });
 
   $("#search-wiki").on("keydown", function(e) {
     if (e.which == 13) {
       $(".outer-container").animate({
-        top: "15%"
+        margin: "5vh auto"
       }, 300);
       $(".search-result-container").html("");
 
