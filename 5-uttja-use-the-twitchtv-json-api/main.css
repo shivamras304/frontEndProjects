@@ -15,7 +15,7 @@ body {
   width: 480px;
   text-align: center;
   background: #FF1744;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
 }
 
 .container h1 {
@@ -46,7 +46,7 @@ header ul li {
   cursor: pointer;
 }
 header ul li:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .active {
   background: #FF6F00;
@@ -61,6 +61,11 @@ main ul {
 }
 main ul li {
   padding: 10px;
+  border: 2px solid black;
+  border-top: none;
+}
+main ul li:first-of-type {
+  border-top: 2px solid black;
 }
 .online {
   background: #00E676;
@@ -88,4 +93,7 @@ main ul li img {
   content: "";
   display: table;
   clear: both;
+}
+.hidden {
+  display: none;
 }
