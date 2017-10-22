@@ -1,0 +1,58 @@
+<!-- No libraries used in this project -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <div class="container">
+    <main class="calculator">
+      <h1 id="calc-logo">Electronic Calculator</h1>
+      <div class="calc-output">
+        <h2 id="calc-result">12</h2>
+        <h4 id="calc-expression">4*3</h4>
+      </div>
+      <table>
+        <tr>
+          <td class="operation" id="divide">/</td>
+          <td class="operation" id="multiply">*</td>
+          <td class="operation" id="subtract">-</td>
+          <td class="operation" id="add">+</td>
+        </tr>
+        <tr>
+          <td class="number" id="seven" onclick="clickNumber()">7</td>
+          <td class="number" id="eight" onclick="clickNumber">8</td>
+          <td class="number" id="nine" onclick="clickNumber">9</td>
+          <td id="ac">AC</td>
+        </tr>
+        <tr>
+          <td class="number" id="four">4</td>
+          <td class="number" id="five">5</td>
+          <td class="number" id="six">6</td>
+          <td id="ce">CE</td>
+        </tr>
+        <tr>
+          <td class="number" id="one">1</td>
+          <td class="number" id="two">2</td>
+          <td class="number" id="three">3</td>
+          <td rowspan="2" id="equals">=</td>
+        </tr>
+        <tr>
+          <td class="number" colspan="2" id="zero">0</td>
+          <td id="decimal">.</td>
+        </tr>
+      </table>
+    </main>
+    <footer>
+      Built by <a href="https://www.freecodecamp.org/shivamras304">Shivam Rastogi</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
