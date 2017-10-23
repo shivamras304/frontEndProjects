@@ -14,42 +14,42 @@
     <main class="calculator">
       <h1 id="calc-logo">Electronic Calculator</h1>
       <div class="calc-output">
-        <h2 id="calc-result">12</h2>
-        <h4 id="calc-expression">4*3</h4>
+        <h2 id="calc-result">0</h2>
+        <h4 id="calc-expression">0</h4>
       </div>
       <table>
         <tr>
-          <td class="operation" id="divide">/</td>
-          <td class="operation" id="multiply">*</td>
-          <td class="operation" id="subtract">-</td>
-          <td class="operation" id="add">+</td>
+          <td class="operation" id="divide" onclick="clickOperation(this)">/</td>
+          <td class="operation" id="multiply" onclick="clickOperation(this)">*</td>
+          <td class="operation" id="subtract" onclick="clickOperation(this)">-</td>
+          <td class="operation" id="add" onclick="clickOperation(this)">+</td>
         </tr>
         <tr>
-          <td class="number" id="seven" onclick="clickNumber()">7</td>
-          <td class="number" id="eight" onclick="clickNumber">8</td>
-          <td class="number" id="nine" onclick="clickNumber">9</td>
+          <td class="number" id="seven" onclick="clickNumber(this)">7</td>
+          <td class="number" id="eight" onclick="clickNumber(this)">8</td>
+          <td class="number" id="nine" onclick="clickNumber(this)">9</td>
           <td id="ac">AC</td>
         </tr>
         <tr>
-          <td class="number" id="four">4</td>
-          <td class="number" id="five">5</td>
-          <td class="number" id="six">6</td>
+          <td class="number" id="four" onclick="clickNumber(this)">4</td>
+          <td class="number" id="five" onclick="clickNumber(this)">5</td>
+          <td class="number" id="six" onclick="clickNumber(this)">6</td>
           <td id="ce">CE</td>
         </tr>
         <tr>
-          <td class="number" id="one">1</td>
-          <td class="number" id="two">2</td>
-          <td class="number" id="three">3</td>
+          <td class="number" id="one" onclick="clickNumber(this)">1</td>
+          <td class="number" id="two" onclick="clickNumber(this)">2</td>
+          <td class="number" id="three" onclick="clickNumber(this)">3</td>
           <td rowspan="2" id="equals">=</td>
         </tr>
         <tr>
-          <td class="number" colspan="2" id="zero">0</td>
+          <td class="number" colspan="2" id="zero" onclick="clickNumber(this)">0</td>
           <td id="decimal">.</td>
         </tr>
       </table>
     </main>
     <footer>
-      Built by <a href="https://www.freecodecamp.org/shivamras304">Shivam Rastogi</a>
+      Built by <a href="https://www.github.com/shivamras304" target="_blank">Shivam Rastogi</a>
     </footer>
   </div>
 
