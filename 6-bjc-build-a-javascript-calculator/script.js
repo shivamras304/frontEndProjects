@@ -29,6 +29,11 @@ window.onload = function() {
   }
 
   window.clickNumber = function(target) {
+    if(resultString.length > 8 || expressionString.length >= 20) {
+      allClear();
+      calcExpression.innerText = "DIGIT LIMIT MET";
+      return;
+    }
     if(expressionString === "0") {
       //If the calculator is in fresh state
       //Accept any number but zero
@@ -81,11 +86,14 @@ window.onload = function() {
       }
     }
     isLastExpOp = false;
-
-    console.log(expressionArray);
   }
 
   window.clickOperation = function(target) {
+    if(resultString.length > 8 || expressionString.length >= 20) {
+      allClear();
+      calcExpression.innerText = "DIGIT LIMIT MET";
+      return;
+    }
 
     if(expressionString === "0" && target.id === "subtract") {
       //If the calculator is in fresh state
@@ -124,6 +132,12 @@ window.onload = function() {
   }
 
   decimal.addEventListener("click", function() {
+    if(resultString.length > 8 || expressionString.length >= 20) {
+      allClear();
+      calcExpression.innerText = "DIGIT LIMIT MET";
+      return;
+    }
+
     if(!isDecimal) {
       if(lastOperation) {
         expressionArray.push(lastOperation);
@@ -148,10 +162,7 @@ window.onload = function() {
     }
   })
 
-  ac.addEventListener("click", function() {
-    allClear();
-    console.log(expressionArray);
-  })
+  ac.addEventListener("click", allClear);
 
   // ce.addEventListener("click", function() {
   //   cancelEntry();
@@ -166,8 +177,6 @@ window.onload = function() {
 
     calculateResult();
     showResult();
-
-    console.log(expressionArray);
   })
 
   function topUpLastNumber() {
@@ -225,6 +234,12 @@ window.onload = function() {
   function showResult() {
     resultString = "" + result;
     expressionString += " = " + result;
+
+    if(resultString.length > 8 || expressionString.length >= 20) {
+      allClear();
+      calcExpression.innerText = "DIGIT LIMIT MET";
+      return;
+    }
 
     calcExpression.innerText = expressionString;
     calcResult.innerText = resultString;
