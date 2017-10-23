@@ -1,37 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Orbitron');
+
 body {
-  font-family: sans-serif;
+  background: #EEEEEE;
 }
+
 div.container {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 10%;
 }
+
 main.calculator {
-  border: 1px solid black;
-  width: 400px;
+  width: 320px;
   margin: 0 auto;
+  border-radius: 20px;
+  background-color: #263238;
+  font-family: 'Orbitron', sans-serif;
+  padding: 10px;
+  box-shadow: 8px 8px 50px 8px rgba(0,0,0,0.75),
+  inset 0px -1px 0px 1px rgba(38,50,56,1),
+  inset 0px -4px 20px 1px rgba(0,0,0,0.75);
 }
+
+p#calc-logo {
+  font-size: 18px;
+  font-weight: 100;
+  color: #CFD8DC;
+}
+
 div.calc-output {
-  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #B0BEC5;
+  border-radius: 5px;
+  text-align: right;
+  margin: 28px 10px 20px 10px;
+  box-shadow: inset 3px 3px 10px 1px rgba(144,164,174, 1),
+  inset -3px -3px 10px 1px rgba(144,164,174, 1),
+  inset 2px 2px 0px 1px rgba(144,164,174, 1),
+  inset 2px 2px 0px 1px rgba(144,164,174, 1);
 }
-h1 {
+p#calc-result {
+  margin: 0;
+  font-weight: 100;
+  color: #263238;
+  padding-bottom: 5px;
+  font-size: 40px;
 }
+p#calc-expression {
+  font-weight: 100;
+  margin: 0;
+  padding-right: 5px;
+  color: #455A64;
+}
+
 table {
   width: 100%;
 }
-#calc-result, #calc-expression {
-  text-align: right;
-  padding-right: 20px;
-}
-#ac, #ce {
-  background-color: #ccc;
-}
+
 td {
-  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #455A64;
   padding: 16px;
+  color: white;
+  box-sizing: border-box;
+  min-width: 63px;
   font-weight: bolder;
   font-size: 20px;
   cursor: pointer;
+  box-shadow: inset 0px -5px 1px 0px rgba(55,71,79,1),
+  inset 0px -5px 5px 0px rgba(255,255,255,0.5);
 }
+
+td:active {
+  transform: scaleY(0.8) translateY(5px);
+}
+
+td#ac{
+  background-color: #C2185B;
+  box-shadow: inset 0px -5px 1px 0px rgba(136,14,79,1),
+  inset 0px -5px 5px 0px rgba(255,255,255,0.5);
+}
+
 footer {
+  font-family: 'Josefin Sans', sans-serif;
   margin-top: 40px;
+  color: #1A237E;
+}
+a {
+  color: #C2185B;
+  font-weight: bold;
 }

@@ -4,7 +4,7 @@ window.onload = function() {
   var calcExpression = document.querySelector("#calc-expression");
 
   var ac = document.querySelector("#ac");
-  var ce = document.querySelector("#ce");
+  // var ce = document.querySelector("#ce");
   var equals = document.querySelector("#equals");
   var decimal = document.querySelector("#decimal");
 
@@ -21,11 +21,18 @@ window.onload = function() {
   var lastOperation; //undefined by default
   var lastNumber = 0;
 
+  var operationMap = {
+    "add": "&plus;",
+    "subtract": "&minus;",
+    "multiply": "&times;",
+    "divide": "&divide;"
+  }
+
   window.clickNumber = function(target) {
     if(expressionString === "0") {
       //If the calculator is in fresh state
       //Accept any number but zero
-      //Nothing has to be pushe on the expressionArray
+      //Nothing has to be pushed on the expressionArray
       if(target.id !== "zero") {
         expressionString = target.innerText;
         resultString = target.innerText;
@@ -33,7 +40,7 @@ window.onload = function() {
 
     } else if(!isLastExpOp && !isDecimal) {
       //If the last input to the experession was a non-decimal number only
-      //Nothing has to be pushe on the expressionArray
+      //Nothing has to be pushed on the expressionArray
       if(lastNumber) {
         //If the lastNumber was not zero
         expressionString += target.innerText;
@@ -45,7 +52,7 @@ window.onload = function() {
       }
     } else if(!isLastExpOp && isDecimal) {
       //If the last input to the experession was a decimal number only
-      //Nothing has to be pushe on the expressionArray
+      //Nothing has to be pushed on the expressionArray
       expressionString += target.innerText;
       resultString += target.innerText;
     } else if(isLastExpOp) {
@@ -118,6 +125,10 @@ window.onload = function() {
 
   decimal.addEventListener("click", function() {
     if(!isDecimal) {
+      if(lastOperation) {
+        expressionArray.push(lastOperation);
+        lastOperation = undefined;
+      }
       if(expressionString === "0") {
         expressionString = "0."
         resultString = "0.";
@@ -142,17 +153,16 @@ window.onload = function() {
     console.log(expressionArray);
   })
 
-  ce.addEventListener("click", function() {
-    cancelEntry();
-    allClear();
-  })
+  // ce.addEventListener("click", function() {
+  //   cancelEntry();
+  // })
 
   equals.addEventListener("click", function() {
     if(expressionString.length <= 2) {
       allClear();
       return;
     }
-    topUpExpressionArray();
+    topUpLastNumber();
 
     calculateResult();
     showResult();
@@ -160,9 +170,14 @@ window.onload = function() {
     console.log(expressionArray);
   })
 
-  function topUpExpressionArray() {
+  function topUpLastNumber() {
     if(lastNumber) {
       expressionArray.push(lastNumber);
+    }
+  }
+  function topUpLastOperation() {
+    if(lastOperation) {
+      expressionArray.push(lastOperation);
     }
   }
 
@@ -185,14 +200,6 @@ window.onload = function() {
 
   function cancelEntry() {
     //TODO to be added later
-    // if(isLastExpOp) {
-    //   //The last added entry was an operation
-    //   lastOperation = undefined;
-    //   isLastExpOp = false;
-    //   lastNumber = expressionArray[]
-    // } else {
-    //   //The last added entry was a number
-    // }
   }
 
   function calculateResult() {
