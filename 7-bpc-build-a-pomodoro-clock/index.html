@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
   <div class="container">
     <h1>FreeCodeCamp</h1>
@@ -16,30 +18,28 @@
 
       <div class="break-setter">
         <p>Break Length</p>
-        <button id="down-break" onclick="setBreakLength(this)">-</button>
-        <span id="length-break">5</span>
-        <button id="up-break" onclick="setBreakLength(this)">+</button>
+        <span id="down-break" class="button" onclick="setBreakLength(this)">-</span>
+        <span id="length-break" class="setter">5</span>
+        <span id="up-break" class="button" onclick="setBreakLength(this)">+</span>
       </div>
       <div class="session-setter">
         <p>Session Length</p>
-        <button id="down-session" onclick="setSessionLength(this)">-</button>
-        <span id="length-session">10</span>
-        <button id="up-session" onclick="setSessionLength(this)">+</button>
+        <span id="down-session" class="button" onclick="setSessionLength(this)">-</span>
+        <span id="length-session" class="setter">25</span>
+        <span id="up-session" class="button" onclick="setSessionLength(this)">+</span>
       </div>
 
-      <div class="clock-controls">
-        <i id="play-pause" class="fa fa-play" aria-hidden="true"></i>
-        <i id="reset" class="fa fa-undo" aria-hidden="true"></i>
-      </div>
-
-      <div class="clock">
+      <div id="clock">
         <p id="clock-heading">SESSION</p>
-        <p id="clock-time">10</p>
+        <p id="clock-time" class="hide">25</p>
       </div>
+
+      <i id="reset" class="fa fa-undo" aria-hidden="true"></i>
     </div>
   </div>
 
   <script src="script.js"></script>
 
 </body>
+
 </html>
