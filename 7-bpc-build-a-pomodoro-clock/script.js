@@ -2,9 +2,6 @@
 
 window.onload = function() {
 
-  var breakLength = 5;
-  var sessionLength = 10;
-
   var breakLengthDisplay = document.querySelector("#length-break");
   var sessionLengthDisplay = document.querySelector("#length-session");
 
@@ -18,26 +15,40 @@ window.onload = function() {
   var isSession = true;
   var timerId;
 
+  //These values should be the same as in the html code
+  //The following two variables will only be altered manually
+  var breakLength = 5;
+  var sessionLength = 10;
+
+  //The following two variable will be altered in code
+  var breakLengthSecs = breakLength*60;
+  var sessionLengthSecs = sessionLength*60;
+
   var sound = new Audio("https://www.freespecialeffects.co.uk/soundfx/sirens/big_bell.wav");
 
   window.setBreakLength = function(target) {
-    resetClock();
+    if(isClockRunning) return;
+
     if(target.id === "up-break") {
       breakLength++;
     } else if(breakLength > 1){
       breakLength--;
     }
+
     breakLengthDisplay.innerText = breakLength;
+    breakLengthSecs = breakLength*60;
   }
 
   window.setSessionLength = function(target) {
-    resetClock();
+    if(isClockRunning) return;
+
     if(target.id === "up-session") {
       sessionLength++;
     } else if(sessionLength > 1){
       sessionLength--;
     }
     sessionLengthDisplay.innerText = sessionLength;
+    sessionLengthSecs = sessionLength*60;
   }
 
   function startClock() {
@@ -53,50 +64,79 @@ window.onload = function() {
     isSession = true;
     isClockRunning = true;
     clockHeading.innerText = "Session";
-    clockTime.innerText = sessionLength;
+    clockTime.innerText = getClockTime(sessionLengthSecs);
     timerId = setInterval(function() {
-      sessionLength--;
-      clockTime.innerText = sessionLength;
-      if(sessionLength === 0) {
+      sessionLengthSecs--;
+      clockTime.innerText = getClockTime(sessionLengthSecs);;
+      if(sessionLengthSecs === 0) {
         clearInterval(timerId);
         isSession = false;
-        sessionLength = Number(sessionLengthDisplay.innerText);
+        sessionLengthSecs = sessionLength*60;
         sound.play();
         startBreak();
       }
-    }, 60*1000);
+    }, 1000);
   }
 
   function startBreak() {
     isSession = false;
     isClockRunning = true;
     clockHeading.innerText = "Break";
-    clockTime.innerText = breakLength;
+    clockTime.innerText = getClockTime(breakLengthSecs);
     timerId = setInterval(function() {
-      breakLength--;
-      clockTime.innerText = breakLength;
-      if(breakLength === 0) {
+      breakLengthSecs--;
+      clockTime.innerText = getClockTime(breakLengthSecs);
+      if(breakLengthSecs === 0) {
         clearInterval(timerId);
         isSession = true;
-        breakLength = Number(breakLengthDisplay.innerText);
+        breakLengthSecs = breakLength*60;
         sound.play();
         startSession();
       }
-    }, 60*1000);
+    }, 1000);
   }
 
   function resetClock() {
     clearInterval(timerId);
 
-    breakLength = 5;
-    sessionLength = 10;
-    breakLengthDisplay.innerText = breakLength;
-    sessionLengthDisplay.innerText = sessionLength;
     clockTime.innerText = sessionLength;
     clockHeading.innerText = "Session"
 
+    breakLengthSecs = breakLength*60;
+    sessionLengthSecs = sessionLength*60;
+
     isClockRunning = false;
     isSession = true;
+
+    timerId = undefined;
+  }
+
+  function getClockTime(seconds) {
+    var hours, mins;
+    if(seconds < 60) {
+      return seconds;
+    } else if(seconds < 3600) {
+      mins = Math.round(seconds/60);
+      seconds = seconds%60;
+      seconds = Math.round((seconds)*100)/100;
+      if(seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      return mins + ":" + seconds;
+    } else {
+      hours = Math.round(seconds/3600);
+      seconds = seconds%3600;
+      mins = Math.round(seconds/60);
+      if(mins < 10) {
+        mins = "0" + mins;
+      }
+      seconds = seconds%60;
+      seconds = Math.round((seconds)*100)/100;
+      if(seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      return hours + ":" + mins + ":" + seconds;  
+    }
   }
 
   resetButton.addEventListener("click", resetClock);
