@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pomodoro Clock</title>
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <div class="container">
@@ -15,27 +16,30 @@
 
       <div class="break-setter">
         <p>Break Length</p>
-        <button id="down-break">-</button>
+        <button id="down-break" onclick="setBreakLength(this)">-</button>
         <span id="length-break">5</span>
-        <button id="up-break">+</button>
+        <button id="up-break" onclick="setBreakLength(this)">+</button>
       </div>
       <div class="session-setter">
         <p>Session Length</p>
-        <button id="down-session">-</button>
-        <span id="length-session">25</span>
-        <button id="up-session">+</button>
+        <button id="down-session" onclick="setSessionLength(this)">-</button>
+        <span id="length-session">10</span>
+        <button id="up-session" onclick="setSessionLength(this)">+</button>
+      </div>
+
+      <div class="clock-controls">
+        <i id="play-pause" class="fa fa-play" aria-hidden="true"></i>
+        <i id="reset" class="fa fa-undo" aria-hidden="true"></i>
       </div>
 
       <div class="clock">
         <p id="clock-heading">SESSION</p>
-        <p id="clock-time">25</p>
+        <p id="clock-time">10</p>
       </div>
     </div>
   </div>
 
-  <script src="script.js">
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
