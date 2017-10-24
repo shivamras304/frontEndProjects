@@ -1,4 +1,3 @@
-
 window.onload = function() {
   var calcResult = document.querySelector("#calc-result");
   var calcExpression = document.querySelector("#calc-expression");
@@ -10,7 +9,7 @@ window.onload = function() {
 
   //The following variables have been initialized with values for fresh
   //state of the calculator
-  var result=0;
+  var result = 0;
   var expressionString = "0";
   var expressionArray = [];
   var resultString = "0";
@@ -29,41 +28,41 @@ window.onload = function() {
   }
 
   window.clickNumber = function(target) {
-    if(resultString.length > 8 || expressionString.length >= 20) {
+    if (resultString.length > 8 || expressionString.length >= 20) {
       allClear();
       calcExpression.innerText = "DIGIT LIMIT MET";
       return;
     }
-    if(expressionString === "0") {
+    if (expressionString === "0") {
       //If the calculator is in fresh state
       //Accept any number but zero
       //Nothing has to be pushed on the expressionArray
-      if(target.id !== "zero") {
+      if (target.id !== "zero") {
         expressionString = target.innerText;
         resultString = target.innerText;
       } else return;
 
-    } else if(!isLastExpOp && !isDecimal) {
+    } else if (!isLastExpOp && !isDecimal) {
       //If the last input to the experession was a non-decimal number only
       //Nothing has to be pushed on the expressionArray
-      if(lastNumber) {
+      if (lastNumber) {
         //If the lastNumber was not zero
         expressionString += target.innerText;
         resultString += target.innerText;
       } else {
         //If the lastNumber was zero
-        expressionString = expressionString.substring(0, expressionString.length-1) + target.innerText;
+        expressionString = expressionString.substring(0, expressionString.length - 1) + target.innerText;
         resultString = target.innerText;
       }
-    } else if(!isLastExpOp && isDecimal) {
+    } else if (!isLastExpOp && isDecimal) {
       //If the last input to the experession was a decimal number only
       //Nothing has to be pushed on the expressionArray
       expressionString += target.innerText;
       resultString += target.innerText;
-    } else if(isLastExpOp) {
+    } else if (isLastExpOp) {
       //If the last input to the expression was an operation only
       //The operation has to be pushed to the expressionArray
-      if(lastOperation === "divide" && target.id === "zero") {
+      if (lastOperation === "divide" && target.id === "zero") {
         return;
       }
       expressionArray.push(lastOperation);
@@ -75,11 +74,11 @@ window.onload = function() {
     calcExpression.innerText = expressionString;
     calcResult.innerText = resultString;
 
-    if(!isDecimal) {
-      lastNumber = lastNumber*10 + Number(target.innerText);
+    if (!isDecimal) {
+      lastNumber = lastNumber * 10 + Number(target.innerText);
     } else {
       var decimalForm = Number(lastNumber + "." + target.innerText);
-      if(isNaN(decimalForm)) {
+      if (isNaN(decimalForm)) {
         lastNumber = Number(lastNumber + target.innerText);
       } else {
         lastNumber = decimalForm;
@@ -89,13 +88,13 @@ window.onload = function() {
   }
 
   window.clickOperation = function(target) {
-    if(resultString.length > 8 || expressionString.length >= 20) {
+    if (resultString.length > 8 || expressionString.length >= 20) {
       allClear();
       calcExpression.innerText = "DIGIT LIMIT MET";
       return;
     }
 
-    if(expressionString === "0" && target.id === "subtract") {
+    if (expressionString === "0" && target.id === "subtract") {
       //If the calculator is in fresh state
       //Accept only minus operator
       //The number zero has to be pushed on the array
@@ -103,15 +102,15 @@ window.onload = function() {
       resultString = target.innerText;
       expressionArray.push(0);
       lastNumber = 0;
-    } else if(isLastExpOp) {
+    } else if (isLastExpOp) {
       //If the last input to the expression was an operation only
       //If there is only a subtract operation, don't replace it
-      if(!expressionArray[0] && lastOperation === "subtract") {
+      if (!expressionArray[0] && lastOperation === "subtract") {
         return;
       }
-      expressionString = expressionString.substring(0, expressionString.length-1) + target.innerText;
+      expressionString = expressionString.substring(0, expressionString.length - 1) + target.innerText;
       resultString = target.innerText;
-    } else if(!isLastExpOp) {
+    } else if (!isLastExpOp) {
       //If the last input to the expression was a number
       //Push the number to the expression array
       expressionArray.push(lastNumber);
@@ -132,21 +131,21 @@ window.onload = function() {
   }
 
   decimal.addEventListener("click", function() {
-    if(resultString.length > 8 || expressionString.length >= 20) {
+    if (resultString.length > 8 || expressionString.length >= 20) {
       allClear();
       calcExpression.innerText = "DIGIT LIMIT MET";
       return;
     }
 
-    if(!isDecimal) {
-      if(lastOperation) {
+    if (!isDecimal) {
+      if (lastOperation) {
         expressionArray.push(lastOperation);
         lastOperation = undefined;
       }
-      if(expressionString === "0") {
+      if (expressionString === "0") {
         expressionString = "0."
         resultString = "0.";
-      } else if(isLastExpOp) {
+      } else if (isLastExpOp) {
         expressionString += "0."
         resultString = "0.";
       } else {
@@ -169,7 +168,7 @@ window.onload = function() {
   // })
 
   equals.addEventListener("click", function() {
-    if(expressionString.length <= 2) {
+    if (expressionString.length <= 2) {
       allClear();
       return;
     }
@@ -180,18 +179,19 @@ window.onload = function() {
   })
 
   function topUpLastNumber() {
-    if(lastNumber) {
+    if (lastNumber) {
       expressionArray.push(lastNumber);
     }
   }
+
   function topUpLastOperation() {
-    if(lastOperation) {
+    if (lastOperation) {
       expressionArray.push(lastOperation);
     }
   }
 
   function allClear() {
-    result=0;
+    result = 0;
     expressionString = "0";
     expressionArray = [];
     resultString = "0";
@@ -212,30 +212,30 @@ window.onload = function() {
   }
 
   function calculateResult() {
-    for(var i = 0; i < expressionArray.length - 2; i = i+2) {
-      switch (expressionArray[i+1]) {
+    for (var i = 0; i < expressionArray.length - 2; i = i + 2) {
+      switch (expressionArray[i + 1]) {
         case "add":
-          expressionArray[i+2] = expressionArray[i] + expressionArray[i+2];
+          expressionArray[i + 2] = expressionArray[i] + expressionArray[i + 2];
           break;
         case "subtract":
-          expressionArray[i+2] = expressionArray[i] - expressionArray[i+2];
+          expressionArray[i + 2] = expressionArray[i] - expressionArray[i + 2];
           break;
         case "multiply":
-          expressionArray[i+2] = expressionArray[i] * expressionArray[i+2];
+          expressionArray[i + 2] = expressionArray[i] * expressionArray[i + 2];
           break;
         case "divide":
-          expressionArray[i+2] = expressionArray[i] / expressionArray[i+2];
+          expressionArray[i + 2] = expressionArray[i] / expressionArray[i + 2];
           break;
       }
     }
-    result = expressionArray[expressionArray.length-1];
+    result = expressionArray[expressionArray.length - 1];
   }
 
   function showResult() {
     resultString = "" + result;
     expressionString += " = " + result;
 
-    if(resultString.length > 8 || expressionString.length >= 20) {
+    if (resultString.length > 8 || expressionString.length >= 20) {
       allClear();
       calcExpression.innerText = "DIGIT LIMIT MET";
       return;
