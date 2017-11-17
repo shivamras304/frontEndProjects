@@ -8,10 +8,57 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  the heck<br>
-  this is still open<br>
-  hahah
+
+  <div id="board-container">
+    <div id="level" class="board-display">Level: Novice</div>
+    <div id="reset" class="board-display">Reset All</div>
+    <div id="player1-turn" class="turn-indicator">Computer</div>
+    <div id="player2-turn" class="turn-indicator">Shivam</div>
+    <div id="board-screen">
+      <!-- <div id="name-screen" class="screen-container">
+        <label class="screen-heading">What's your name?</label>
+        <input type="text" id="player-name" placeholder="John Doe" autofocus>
+      </div> -->
+      <!-- <div id="level-screen" class="screen-container">
+        <p class="screen-heading">Choose Level</p>
+        <div>
+          <span id="chosen-level-Blind" class="chosen-level">Blind</span>
+          <span id="chosen-level-Novice" class="chosen-level">Novice</span>
+          <span id="chosen-level-Master" class="chosen-level">Master</span>
+        </div>
+      </div> -->
+      <!-- <div id="symbol-screen" class="screen-container">
+        <p class="screen-heading">Would you like to be X or O?</p>
+        <div>
+          <span id="chosen-symbol-X" class="chosen-symbol">X</span>
+          <span id="chosen-symbol-O" class="chosen-symbol">O</span>
+        </div>
+      </div> -->
+      <div id="game-screen" class="screen-container">
+        <div id="cell-0" class="cell">X</div>
+        <div class="vertical-divider"></div>
+        <div id="cell-1" class="cell">O</div>
+        <div class="vertical-divider"></div>
+        <div id="cell-2" class="cell"></div>
+        <div class="horizontal-divider"></div>
+        <div id="cell-3" class="cell"></div>
+        <div id="cell-4" class="cell"></div>
+        <div id="cell-5" class="cell">O</div>
+        <!-- TODO some error here in the divider -->
+        <div class="horizontal-divider horizontal-divider2"></div>
+        <div id="cell-6" class="cell">X</div>
+        <div id="cell-7" class="cell">X</div>
+        <div id="cell-8" class="cell"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+      Designed &amp; coded By <a href="https://www.github.com/shivamras304" target="_blank">Shivam Rastogi</a>
+    </footer>
+  </div>
 
   <script src="scripts/game.js"></script>
+  <script src="scripts/ai.js"></script>
 </body>
 </html>
