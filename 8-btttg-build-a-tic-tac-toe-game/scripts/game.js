@@ -139,6 +139,7 @@ GameState.GAME_DRAW = 3;
 GameState.BOARD_EMPTYCELL = 0;
 GameState.BOARD_PLAYER1 = 1;
 GameState.BOARD_PLAYER2 = 2;
+
 /*
  * Represents basic requirements of a game player
  * @param symbol [String]: Either X or O as chosen by the player(s)
@@ -151,11 +152,11 @@ var GamePlayer = function(_symbol, _name) {
   // private
   var name = _name;
 
-  this.getSymbol() {
+  this.getSymbol = function() {
     return symbol;
   }
 
-  this.getName() {
+  this.getName = function() {
     return name;
   }
 }
@@ -198,15 +199,18 @@ var Game = function(aiPlayer, humanPlayer) {
       if(_state.isTerminal()) {
         this.status = Game.STATUS_ENDED;
 
-        if(_state.result === GameState.PLAYER2_WINS)
-          //Human won
-          //TODO ui.switchViewTo("won");
-        else if(_state.result === GameState.PLAYER1_WINS)
-          //Human lost
-          //TODO ui.switchViewTo("lost");
-        else
+        if(_state.result === GameState.PLAYER2_WINS) {
+            //Human won
+            //TODO ui.switchViewTo("won");
+        }
+        else if(_state.result === GameState.PLAYER1_WINS) {
+            //Human lost
+            //TODO ui.switchViewTo("lost");
+        }
+        else {
           //it's a draw
           //TODO ui.switchViewTo("draw");
+        }
       }
       else {
         //the game is still running

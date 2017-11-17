@@ -265,4 +265,4 @@ AIPlayer.LEVEL_MASTER = 2;
  * AIPlayer inherits from GamePlayer
  */
 AIPlayer.prototype = Object.create(GamePlayer)
-AIPlayer.protoype.constructor = AIPlayer;
+AIPlayer.prototype.constructor = AIPlayer;
