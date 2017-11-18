@@ -4,6 +4,9 @@ var globals = {};
 $(window).on("load", readyFunction);
 function readyFunction() {
   var boardScreen = $("#board-screen");
+  var levelDisplay = $("#level");
+  var resetDisplay = $("#reset");
+  var playerTurnIndicator = $("#player2-turn");
   var popSound = $("#pop")[0];
   var clickSound = $("#click")[0];
 
@@ -11,6 +14,10 @@ function readyFunction() {
   function resetAll() {
     globals = {};
     boardScreen.empty();
+    resetDisplay.css("display", "none");
+    levelDisplay.text("");
+    levelDisplay.css("display", "none");
+    playerTurnIndicator.text("Human")
     loadTitleScreen();
   }
 
@@ -57,7 +64,9 @@ function readyFunction() {
               },
               700,
               function() {
-                window.setTimeout(loadNameScreen, 1000);
+                boardScreen.children().animate({
+                  opacity: 0
+                }, 500, loadNameScreen);
               }
             );
           }
@@ -99,22 +108,28 @@ function readyFunction() {
       </div>
       `
     );
+    //////////////////////////////////////////////////////////////////////////
+    boardScreen.children().animate({
+      opacity: 1
+    }, 1000);
+    //////////////////////////////////////////////////////////////////////////
     var inputName = $("#name-screen #player-name");
     inputName.on("keypress", function(e) {
       if(e.which === 13) {
         globals.playerName = inputName.val() || "Human";
-        loadLevelScreen();
+
+        boardScreen.children().animate({
+          opacity: 0
+        }, 500, loadLevelScreen);
       }
     })
-
-    boardScreen.children().animate({
-      opacity: 1
-    }, 1000);
   }
 
   /*
    * Takes input of AI level
    * Default Level is "Novice"
+   * Shows Reset button
+   * Changes player's name on turn indicator
    * Loads SymbolScreen
    */
   function loadLevelScreen() {
@@ -131,6 +146,20 @@ function readyFunction() {
       </div>
       `
     );
+    //////////////////////////////////////////////////////////////////////////
+    resetDisplay.css({
+      "display": "block",
+      "opacity": 0
+    });
+    resetDisplay.animate({
+      opacity: 1
+    }, 1000);
+    boardScreen.children().animate({
+      opacity: 1
+    }, 1000);
+
+    playerTurnIndicator.text(globals.playerName);
+    //////////////////////////////////////////////////////////////////////////
     var levels = $("#level-screen .chosen-level");
     levels.on("click", function(e) {
       globals.playerSymbol = e.target.id === "chosen-symbol-X" ? "X" : "O";
@@ -146,15 +175,16 @@ function readyFunction() {
           break;
         default: globals.gameLevel = AIPlayer.LEVEL_NOVICE;
       }
-      loadSymbolScreen();
+
+      boardScreen.children().animate({
+        opacity: 0
+      }, 500, loadSymbolScreen);
     })
-    boardScreen.children().animate({
-      opacity: 1
-    }, 1000);
   }
 
   /*
    * Takes input of player Symbol
+   * Shows levelDisplay
    * Loads GameScreen
    */
   function loadSymbolScreen() {
@@ -170,14 +200,38 @@ function readyFunction() {
       </div>
       `
     );
-    var symbols = $("#symbol-screen .chosen-symbol");
-    symbols.on("click", function(e) {
-      globals.playerSymbol = e.target.id === "chosen-symbol-X" ? "X" : "O";
-      loadGameScreen();
-    })
+    //////////////////////////////////////////////////////////////////////////
+    levelDisplay.css({
+      "display": "block",
+      "opacity": 0
+    });
+    switch(globals.gameLevel) {
+      case AIPlayer.LEVEL_BLIND:
+        levelDisplay.text("Level: Blind");
+        break;
+      case AIPlayer.LEVEL_NOVICE:
+        levelDisplay.text("Level: Novice");
+        break;
+      case AIPlayer.LEVEL_MASTER:
+        levelDisplay.text("Level: Master");
+        break;
+    }
+    levelDisplay.animate({
+      opacity: 1
+    }, 1000);
     boardScreen.children().animate({
       opacity: 1
     }, 1000);
+    //////////////////////////////////////////////////////////////////////////
+    var symbols = $("#symbol-screen .chosen-symbol");
+    symbols.on("click", function(e) {
+      globals.playerSymbol = e.target.id === "chosen-symbol-X" ? "X" : "O";
+
+      boardScreen.children().animate({
+        opacity: 0
+      }, 500, loadGameScreen);
+    })
+
   }
 
   /*
@@ -204,10 +258,10 @@ function readyFunction() {
       </div>
       `
     );
+
     boardScreen.children().animate({
       opacity: 1
     }, 1000);
-    console.log("Hell")
   }
 
   $("#reset").on("click", function() {
