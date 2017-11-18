@@ -72,14 +72,15 @@ body {
   color: #B2DFDB;
   border: 0.1rem dashed #00897B;
   border-radius: 1rem;
-  top: 0.5rem;
 }
 
 #board-container #level {
+  top: 0.5rem;
   left: 2.5rem;
 }
 
 #board-container #reset {
+  top: 0.5rem;
   right: 2.5rem;
 }
 
@@ -104,13 +105,35 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  opacity: 0;
 }
 
 .screen-heading {
   font-size: 3.4rem;
-  margin: 10rem 0 5rem 0;
+  margin: 10rem 1rem 5rem 1rem;
   display: inline-block;
   font-family: 'Architects Daughter', cursive;
+}
+
+#title-screen .screen-heading {
+  margin-top: 45%;
+  font-size: 0;
+}
+
+.pop-up-anim {
+  animation: pop-up 300ms ease-in-out;
+}
+
+@keyframes pop-up {
+  0% {
+    font-size: 0;
+  }
+  90% {
+    font-size: 4rem;
+  }
+  100% {
+    font-size: 3.4rem;
+  }
 }
 
 #name-screen input {
