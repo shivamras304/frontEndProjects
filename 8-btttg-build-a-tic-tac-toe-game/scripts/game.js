@@ -42,7 +42,7 @@ var GameState = function(oldState) {
 
   if(oldState !== undefined) {
     // If the state is constructed using a copy of another state
-    this.board = oldState.map(function(item) {
+    this.board = oldState.board.map(function(item) {
       return item;
     });
 
@@ -57,7 +57,7 @@ var GameState = function(oldState) {
    * public : switches the turn between the two players for the state
    */
   this.advanceTurn = function() {
-    this.turn = this.turn === player1.getName() ?
+    this.turn = this.turn === this.player1.getName() ?
       this.player2.getName() : this.player1.getName();
   }
 
@@ -85,10 +85,10 @@ var GameState = function(oldState) {
     var that = this;
 
     function updateResultForWinner(boardSymbol) {
-      if(boardSymbol === GameState.BOARD_PLAYER1) {
-        that.result = GameState.PLAYER1_WINS;
+      if(boardSymbol === GameState.BOARD_AI) {
+        that.result = GameState.AI_WINS;
       } else {
-        that.result = GameState.PLAYER2_WINS;
+        that.result = GameState.HUMAN_WINS;
       }
     }
 
@@ -116,7 +116,7 @@ var GameState = function(oldState) {
       }
     }
 
-    var available = this.emptyCells();
+    var available = this.getEmptyCells();
     if(available.length === 0) {
       //the game is draw
       this.result = GameState.GAME_DRAW; //update the state result
@@ -131,14 +131,14 @@ var GameState = function(oldState) {
 //possible results of a game state
 GameState.INVALID = -1;
 GameState.GAME_RUNNING = 0;
-GameState.PLAYER1_WINS = 1;
-GameState.PLAYER2_WINS = 2;
+GameState.AI_WINS = 1;
+GameState.HUMAN_WINS = 2;
 GameState.GAME_DRAW = 3;
 
 //possible values in the board Array
 GameState.BOARD_EMPTYCELL = 0;
-GameState.BOARD_PLAYER1 = 1;
-GameState.BOARD_PLAYER2 = 2;
+GameState.BOARD_AI = 1;
+GameState.BOARD_HUMAN = 2;
 
 /*
  * Represents basic requirements of a game player
@@ -175,7 +175,7 @@ var Game = function(aiPlayer, humanPlayer) {
     this.humanPlayer = humanPlayer;
 
     // public : initialize the game current state to empty board configuration
-    this.currentState = new State();
+    this.currentState = new GameState();
 
     this.currentState.board =
       [GameState.BOARD_EMPTYCELL, GameState.BOARD_EMPTYCELL, GameState.BOARD_EMPTYCELL,
@@ -199,11 +199,11 @@ var Game = function(aiPlayer, humanPlayer) {
       if(_state.isTerminal()) {
         this.status = Game.STATUS_ENDED;
 
-        if(_state.result === GameState.PLAYER2_WINS) {
+        if(_state.result === GameState.HUMAN_WINS) {
             //Human won
             //TODO ui.switchViewTo("won");
         }
-        else if(_state.result === GameState.PLAYER1_WINS) {
+        else if(_state.result === GameState.AI_WINS) {
             //Human lost
             //TODO ui.switchViewTo("lost");
         }
@@ -215,13 +215,16 @@ var Game = function(aiPlayer, humanPlayer) {
       else {
         //the game is still running
         if(this.currentState.turn === this.currentState.player2.getName()) {
-          //TODO ui.switchViewTo("human");
+          ui.switchViewToHuman();
         }
         else {
-          //TODO ui.switchViewTo("robot");
-
-          //notify the AI player its turn has come up
-          this.aiPlayer.notify(this.aiPlayer.getName());
+          ui.switchViewToAI();
+          var that = this;
+          //notify the AI player its turn has come up after 2seconds
+          window.setTimeout(function() {
+            that.aiPlayer.notify(that.aiPlayer.getName());
+          }, 1000);
+          // this.aiPlayer.notify(this.aiPlayer.getName());
         }
       }
     };
@@ -230,7 +233,7 @@ var Game = function(aiPlayer, humanPlayer) {
      * starts the game
      */
     this.start = function() {
-      if(this.status = Game.STATUS_BEGINNING) {
+      if(this.status === Game.STATUS_BEGINNING) {
         //invoke advanceTo with the initial state
         this.advanceTo(this.currentState);
         this.status = Game.STATUS_RUNNING;
@@ -248,11 +251,11 @@ Game.STATUS_ENDED = 2;
  * @return [Number]: the score calculated for the human player
  */
 Game.score = function(_state) {
-  if(_state.result === GameState.PLAYER2_WINS){
+  if(_state.result === GameState.HUMAN_WINS){
     // the human player won
     return 10 - _state.oMovesCount;
   }
-  else if(_state.result === GameState.PLAYER1_WINS) {
+  else if(_state.result === GameState.AI_WINS) {
     //the human player lost
     return - 10 + _state.oMovesCount;
   }

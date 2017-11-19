@@ -21,9 +21,9 @@ var AIAction = function(pos) {
 
     //put the corresponding value on the board
     if(state.turn === state.player1.getName())
-      next.board[this.movePosition] = GameState.BOARD_PLAYER1;
+      next.board[this.movePosition] = GameState.BOARD_AI;
     else
-      next.board[this.movePosition] = GameState.BOARD_PLAYER2;
+      next.board[this.movePosition] = GameState.BOARD_HUMAN;
 
     if(state.turn === state.player1.getName())
       next.oMovesCount++;
@@ -72,7 +72,8 @@ AIAction.DESCENDING = function(firstAction, secondAction) {
  */
 var AIPlayer = function(symbol, name, level) {
 
-  GamePlayer.call(symbol, name);
+  // Call constructor of GamePlayer
+  GamePlayer.call(this, symbol, name);
 
   //private [Number]: level of intelligence the player has
   var levelOfIntelligence = level;
@@ -100,7 +101,7 @@ var AIPlayer = function(symbol, name, level) {
         // AI wants to minimize --> initialize to a value larger than any possible score
         stateScore = 1000;
 
-      var availablePositions = state.emptyCells();
+      var availablePositions = state.getEmptyCells();
 
       //enumerate next available states using the info form available positions
       var availableNextStates = availablePositions.map(function(pos) {
@@ -137,13 +138,13 @@ var AIPlayer = function(symbol, name, level) {
    * @param turn [String]: the name of the player who has the turn to play
    */
   function takeABlindMove(turn) {
-    var available = game.currentState.emptyCells();
+    var available = game.currentState.getEmptyCells();
     var randomCell = available[Math.floor(Math.random() * available.length)];
     var action = new AIAction(randomCell);
 
     var next = action.applyTo(game.currentState);
 
-    //TODO ui.insertAt(randomCell, turn);
+    ui.insertAt(randomCell, globals.game.aiPlayer.getSymbol());
 
     game.advanceTo(next);
   }
@@ -154,7 +155,7 @@ var AIPlayer = function(symbol, name, level) {
    * @param turn [String]: the name of the player who has the turn to play
    */
   function takeANoviceMove(turn) {
-    var available = game.currentState.emptyCells();
+    var available = game.currentState.getEmptyCells();
 
     //enumerate and calculate the score for each available actions to the ai player
     var availableActions = available.map(function(pos) {
@@ -193,7 +194,7 @@ var AIPlayer = function(symbol, name, level) {
     }
     var next = chosenAction.applyTo(game.currentState);
 
-    //TODO ui.insertAt(chosenAction.movePosition, turn);
+    ui.insertAt(chosenAction.movePosition, globals.game.aiPlayer.getSymbol());
 
     game.advanceTo(next);
   }
@@ -204,7 +205,7 @@ var AIPlayer = function(symbol, name, level) {
    * @param turn [String]: the name of the player who has the turn to play
    */
   function takeAMasterMove(turn) {
-    var available = game.currentState.emptyCells();
+    var available = game.currentState.getEmptyCells();
 
     //enumerate and calculate the score for each avaialable actions to the ai player
     var availableActions = available.map(function(pos) {
@@ -227,8 +228,7 @@ var AIPlayer = function(symbol, name, level) {
     //take the first action as it's the optimal
     var chosenAction = availableActions[0];
     var next = chosenAction.applyTo(game.currentState);
-
-    //TODO ui.insertAt(chosenAction.movePosition, turn);
+    ui.insertAt(chosenAction.movePosition, globals.game.aiPlayer.getSymbol());
 
     game.advanceTo(next);
   }
@@ -264,5 +264,5 @@ AIPlayer.LEVEL_MASTER = 2;
 /*
  * AIPlayer inherits from GamePlayer
  */
-AIPlayer.prototype = Object.create(GamePlayer)
+AIPlayer.prototype = Object.create(GamePlayer.prototype);
 AIPlayer.prototype.constructor = AIPlayer;

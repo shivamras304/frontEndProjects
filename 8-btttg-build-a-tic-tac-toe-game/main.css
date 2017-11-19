@@ -223,7 +223,7 @@ body {
   color: white;
   padding: 1rem;
   box-sizing: border-box;
-  font-size: 9rem;
+  font-size: 0;
   font-family: 'Architects Daughter', cursive;
   line-height: 9rem;
 }

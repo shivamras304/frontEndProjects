@@ -1,5 +1,9 @@
 //Global object to hold all game related data
-var globals = {};
+var globals = {
+  gameLevel: 1,
+  playerName: "Shivam",
+  playerSymbol: "X"
+};
 
 $(window).on("load", readyFunction);
 function readyFunction() {
@@ -7,18 +11,22 @@ function readyFunction() {
   var levelDisplay = $("#level");
   var resetDisplay = $("#reset");
   var playerTurnIndicator = $("#player2-turn");
+  var computerTurnIndicator = $("#player1-turn");
   var popSound = $("#pop")[0];
-  var clickSound = $("#click")[0];
 
   // Onclick Reset button
   function resetAll() {
-    globals = {};
+    globals = {
+      gameLevel: 1,
+      playerName: "Shivam",
+      playerSymbol: "X"
+    };
     boardScreen.empty();
     resetDisplay.css("display", "none");
     levelDisplay.text("");
     levelDisplay.css("display", "none");
     playerTurnIndicator.text("Human")
-    loadTitleScreen();
+    loadGameScreen();
   }
 
   /*
@@ -242,26 +250,38 @@ function readyFunction() {
       // TODO some error here in the second horizontal divider
       `
       <div id="game-screen" class="screen-container">
-        <div id="cell-0" class="cell"></div>
+        <div id="cell-0" class="cell" data-cell-no="0"></div>
         <div class="vertical-divider"></div>
-        <div id="cell-1" class="cell"></div>
+        <div id="cell-1" class="cell" data-cell-no="1"></div>
         <div class="vertical-divider"></div>
-        <div id="cell-2" class="cell"></div>
+        <div id="cell-2" class="cell" data-cell-no="2"></div>
         <div class="horizontal-divider"></div>
-        <div id="cell-3" class="cell"></div>
-        <div id="cell-4" class="cell"></div>
-        <div id="cell-5" class="cell"></div>
+        <div id="cell-3" class="cell" data-cell-no="3"></div>
+        <div id="cell-4" class="cell" data-cell-no="4"></div>
+        <div id="cell-5" class="cell" data-cell-no="5"></div>
         <div class="horizontal-divider horizontal-divider2"></div>
-        <div id="cell-6" class="cell"></div>
-        <div id="cell-7" class="cell"></div>
-        <div id="cell-8" class="cell"></div>
+        <div id="cell-6" class="cell" data-cell-no="6"></div>
+        <div id="cell-7" class="cell" data-cell-no="7"></div>
+        <div id="cell-8" class="cell" data-cell-no="8"></div>
       </div>
       `
     );
-
+    //////////////////////////////////////////////////////////////////////////
     boardScreen.children().animate({
       opacity: 1
     }, 1000);
+    //////////////////////////////////////////////////////////////////////////
+
+    var humanPlayer = new GamePlayer(globals.playerSymbol, globals.playerName);
+
+    var aiPlayer = new AIPlayer(
+      globals.playerSymbol === "X" ? "O" : "X",
+      "Computer",
+      globals.gameLevel
+    )
+    globals.game = new Game(aiPlayer, humanPlayer);
+    aiPlayer.plays(globals.game);
+    globals.game.start();
   }
 
   $("#reset").on("click", function() {
