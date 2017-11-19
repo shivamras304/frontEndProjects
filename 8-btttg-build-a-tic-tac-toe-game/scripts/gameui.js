@@ -63,23 +63,36 @@ var ui = {
   },
 
   switchViewToHumanWins: function() {
-    ui.switchViewToResult(`${globals.game.humanPlayer.getName()} Wins`);
+    ui.switchViewToResult(
+      `${globals.game.humanPlayer.getName()} Wins`,
+      ui.getWinningSequence()
+    );
   },
 
   switchViewToAIWins: function() {
-    ui.switchViewToResult(`${globals.game.aiPlayer.getName()} Wins`);
+    ui.switchViewToResult(
+      `${globals.game.aiPlayer.getName()} Wins`,
+      ui.getWinningSequence()
+    );
   },
 
   switchViewToDraw: function() {
     ui.switchViewToResult("DRAW!");
   },
 
-  switchViewToResult: function(message) {
-    if(globals.winningSequence) {
-      globals.winningSequence.forEach(function(pos) {
+  switchViewToResult: function(message, winningSequence) {
+    if(winningSequence) {
+      winningSequence.forEach(function(pos) {
         $(`#game-screen #cell-${pos}`).css("backgroundColor", "black");
       });
     }
+
+    $("#board-container #player1-turn").animate({
+      top: 0
+    }, 200);
+    $("#board-container #player2-turn").animate({
+      top: 0
+    }, 200);
 
     window.setTimeout(function() {
       $("#board-screen").append(
@@ -101,7 +114,30 @@ var ui = {
       );
 
     }, 500);
-  }
+  },
 
+  getWinningSequence: function() {
+    var B = globals.game.currentState.board;
+    //check rows
+    for(var i = 0; i <= 6; i = i + 3) {
+      if(B[i] !== GameState.BOARD_EMPTYCELL && B[i] === B[i + 1] && B[i + 1] == B[i + 2]) {
+        return [i, i + 1, i + 2];
+      }
+    }
+
+    //check columns
+    for(var i = 0; i <= 2 ; i++) {
+      if(B[i] !== GameState.BOARD_EMPTYCELL && B[i] === B[i + 3] && B[i + 3] === B[i + 6]) {
+        return [i, i + 3, i + 6];
+      }
+    }
+
+    //check diagonals
+    for(var i = 0, j = 4; i <= 2 ; i = i + 2, j = j - 2) {
+      if(B[i] !== GameState.BOARD_EMPTYCELL && B[i] == B[i + j] && B[i + j] === B[i + 2*j]) {
+        return [i, i + j, i + 2*j];
+      }
+    }
+  }
 
 }

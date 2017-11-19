@@ -90,7 +90,8 @@ var GameState = function(oldState) {
       } else {
         that.result = GameState.HUMAN_WINS;
       }
-      globals.winningSequence = winningSequence;
+      // Updating winning sequence here, sets the winning sequence during
+      // minimax computations also
     }
 
     //check rows

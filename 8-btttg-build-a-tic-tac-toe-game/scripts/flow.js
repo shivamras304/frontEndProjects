@@ -25,7 +25,12 @@ function readyFunction() {
     resetDisplay.css("display", "none");
     levelDisplay.text("");
     levelDisplay.css("display", "none");
-    playerTurnIndicator.text("Human");
+    computerTurnIndicator.animate({
+      top: 0
+    }, 700);
+    playerTurnIndicator.animate({
+      top: 0
+    }, 700, function() { playerTurnIndicator.text("Human"); });
     loadTitleScreen();
   }
 
@@ -249,9 +254,6 @@ function readyFunction() {
    * Instantiates the humanPlayer and aiPlayer and starts the game
    */
   function loadGameScreen() {
-    // Important! Winnig sequence is deleted every time the game loads
-    // hence for draw games, winning sequence will be undefined
-    delete globals.winningSequence;
     globals.loadGameScreen = loadGameScreen;
     boardScreen.empty();
     boardScreen.append(
