@@ -15,6 +15,8 @@ var ui = {
 
       var successfulInsertion = ui.insertAt(cellNo, globals.game.humanPlayer.getSymbol());
       if(successfulInsertion) {
+        // Important to remove event listeners on the board cells
+        // otherwise they would be triggered when AI inserts its moves
         $("#game-screen .cell").off();
 
         var nextState = new GameState(globals.game.currentState);
@@ -58,16 +60,48 @@ var ui = {
       $("#beep")[0].play();
       return false;
     }
-    // if(cell.text()) {
-    //   // Checks if cell is not empty
-    //   $("#beep")[0].play();
-    // } else {
-    //   cell.text(symbol);
-    //   // Plays click sound
-    //   $("#click")[0].play();
-    //   // cell.animate({
-    //   //   fontSize: "9rem"
-    //   // }, 0);
-    // }
+  },
+
+  switchViewToHumanWins: function() {
+    ui.switchViewToResult(`${globals.game.humanPlayer.getName()} Wins`);
+  },
+
+  switchViewToAIWins: function() {
+    ui.switchViewToResult(`${globals.game.aiPlayer.getName()} Wins`);
+  },
+
+  switchViewToDraw: function() {
+    ui.switchViewToResult("DRAW!");
+  },
+
+  switchViewToResult: function(message) {
+    if(globals.winningSequence) {
+      globals.winningSequence.forEach(function(pos) {
+        $(`#game-screen #cell-${pos}`).css("backgroundColor", "black");
+      });
+    }
+
+    window.setTimeout(function() {
+      $("#board-screen").append(
+        `
+        <div id="result-screen" class="screen-container">
+          <p class="screen-heading">${message}</p>
+        </div>
+        `
+      )
+
+      $("#result-screen").animate(
+        {
+          opacity: 1
+        },
+        1000,
+        function() {
+          window.setTimeout(globals.loadGameScreen, 1000);
+        }
+      );
+
+    }, 500);
   }
+
+
 }

@@ -84,18 +84,19 @@ var GameState = function(oldState) {
     var B = this.board;
     var that = this;
 
-    function updateResultForWinner(boardSymbol) {
+    function updateResultForWinner(boardSymbol, winningSequence) {
       if(boardSymbol === GameState.BOARD_AI) {
         that.result = GameState.AI_WINS;
       } else {
         that.result = GameState.HUMAN_WINS;
       }
+      globals.winningSequence = winningSequence;
     }
 
     //check rows
     for(var i = 0; i <= 6; i = i + 3) {
       if(B[i] !== GameState.BOARD_EMPTYCELL && B[i] === B[i + 1] && B[i + 1] == B[i + 2]) {
-        updateResultForWinner(B[i]) //update the state result
+        updateResultForWinner(B[i], [i, i + 1, i + 2]) //update the state result
         return true;
       }
     }
@@ -103,7 +104,7 @@ var GameState = function(oldState) {
     //check columns
     for(var i = 0; i <= 2 ; i++) {
       if(B[i] !== GameState.BOARD_EMPTYCELL && B[i] === B[i + 3] && B[i + 3] === B[i + 6]) {
-        updateResultForWinner(B[i]) //update the state result
+        updateResultForWinner(B[i], [i, i + 3, i + 6]) //update the state result
         return true;
       }
     }
@@ -111,7 +112,7 @@ var GameState = function(oldState) {
     //check diagonals
     for(var i = 0, j = 4; i <= 2 ; i = i + 2, j = j - 2) {
       if(B[i] !== GameState.BOARD_EMPTYCELL && B[i] == B[i + j] && B[i + j] === B[i + 2*j]) {
-        updateResultForWinner(B[i]) //update the state result
+        updateResultForWinner(B[i], [i, i + j, i + 2*j]) //update the state result
         return true;
       }
     }
@@ -201,15 +202,15 @@ var Game = function(aiPlayer, humanPlayer) {
 
         if(_state.result === GameState.HUMAN_WINS) {
             //Human won
-            //TODO ui.switchViewTo("won");
+            ui.switchViewToHumanWins();
         }
         else if(_state.result === GameState.AI_WINS) {
             //Human lost
-            //TODO ui.switchViewTo("lost");
+            ui.switchViewToAIWins();
         }
         else {
           //it's a draw
-          //TODO ui.switchViewTo("draw");
+          ui.switchViewToDraw();
         }
       }
       else {

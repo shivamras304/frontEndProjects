@@ -260,6 +260,15 @@ body {
   top: 22.5rem;
 }
 
+#result-screen {
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2;
+}
+
+#result-screen .screen-heading {
+  margin-top: 45%;
+}
+
 footer {
   font-family: 'Josefin Sans', sans-serif;
   margin-top: 5rem;

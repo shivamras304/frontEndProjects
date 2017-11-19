@@ -1,8 +1,8 @@
 //Global object to hold all game related data
 var globals = {
-  gameLevel: 1,
-  playerName: "Shivam",
-  playerSymbol: "X"
+  // gameLevel: 2,
+  // playerName: "Shivam",
+  // playerSymbol: "X"
 };
 
 $(window).on("load", readyFunction);
@@ -17,16 +17,16 @@ function readyFunction() {
   // Onclick Reset button
   function resetAll() {
     globals = {
-      gameLevel: 1,
-      playerName: "Shivam",
-      playerSymbol: "X"
+      // gameLevel: 2,
+      // playerName: "Shivam",
+      // playerSymbol: "X"
     };
     boardScreen.empty();
     resetDisplay.css("display", "none");
     levelDisplay.text("");
     levelDisplay.css("display", "none");
-    playerTurnIndicator.text("Human")
-    loadGameScreen();
+    playerTurnIndicator.text("Human");
+    loadTitleScreen();
   }
 
   /*
@@ -36,6 +36,9 @@ function readyFunction() {
    * 3. Level Screen
    * 4. Symbol Screen
    * 5. Game Screen
+   * After a game has finished, Game Screen will be loaded again
+   * and this loops indefinitely
+   * Clicking Reset loads the Title Screen
    */
 
   // Plays a small title animation and then loads NameScreen
@@ -243,8 +246,13 @@ function readyFunction() {
   }
 
   /*
+   * Instantiates the humanPlayer and aiPlayer and starts the game
    */
   function loadGameScreen() {
+    // Important! Winnig sequence is deleted every time the game loads
+    // hence for draw games, winning sequence will be undefined
+    delete globals.winningSequence;
+    globals.loadGameScreen = loadGameScreen;
     boardScreen.empty();
     boardScreen.append(
       // TODO some error here in the second horizontal divider
