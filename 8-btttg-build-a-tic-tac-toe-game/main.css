@@ -94,6 +94,9 @@ body {
   width: 37rem;
   height: 37rem;
   background: #AD1457;
+  background-image: radial-gradient(
+    #F76596, #A11351
+  );
   top: 4.5rem;
   left: 2.5rem;
   position: absolute;
@@ -175,7 +178,7 @@ body {
   padding: 1rem 1.5rem 0.5rem 1.5rem;
   margin-left: 0 auto;
   border-radius: 1rem;
-  border: 0.2rem dashed #AD1457;
+  border: 0.2rem dashed transparent;
 }
 
 #level-screen .chosen-level:hover {
@@ -196,7 +199,7 @@ body {
   padding: 1rem 1.5rem 0.5rem 1.5rem;
   margin: 0 1.5rem;
   border-radius: 1rem;
-  border: 0.2rem dashed #AD1457;
+  border: 0.2rem dashed transparent;
 }
 
 #symbol-screen .chosen-symbol:hover {
