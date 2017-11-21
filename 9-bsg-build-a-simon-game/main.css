@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Oswald|VT323');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  font-size: 10px;
+}
+
+
+@media screen and (max-width: 500px) {
+  :root {
+    font-size: 7px;
+  }
+}
+
+body {
+  /*height: 100vh;*/
+  background: #F4FF81 url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/purty_wood.png");
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+#simon-container {
+  width: 48rem;
+  height: 48rem;
+  background: #424242;
+  margin: 7rem auto 0 auto;
+  position: relative;
+  padding: 2.6rem;
+  box-sizing: border-box;
+  border-radius: 50%;
+  box-shadow: 0px 0px 2rem 0.3rem rgba(0,0,0,0.7);
+}
+
+#simon-container .simon-cell {
+  position: absolute;
+  background: yellow;
+  width: 20.1rem;
+  height: 20.1rem;
+  cursor: pointer;
+}
+
+#simon-container #simon-cell-0 {
+  border-radius: 100% 0 0 0;
+  background: #43A047;
+}
+
+#simon-container #simon-cell-1 {
+  right: 2.6rem;
+  background: #AB1A1A;
+  border-radius: 0 100% 0 0;
+}
+
+#simon-container #simon-cell-2 {
+  right: 2.6rem;
+  bottom: 2.6rem;
+  background: #104F96;
+  border-radius: 0 0 100% 0;
+}
+
+#simon-container #simon-cell-3 {
+  bottom: 2.6rem;
+  border-radius: 0 0 0 100%;
+  background: #D1A026;
+}
+
+#simon-control-panel {
+  position: absolute;
+  width: 26rem;
+  height: 26rem;
+  box-sizing: border-box;
+  background: #F5F5F5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1.2rem solid #424242;
+  border-radius: 50%;
+}
+
+#simon-control-panel h1 {
+  font-size: 5rem;
+  font-family: 'Alfa Slab One', cursive;
+  color: #212121;
+  text-align: center;
+  font-weight: 100;
+  margin: 3.3rem 0 0 0;
+}
+
+#simon-control-panel h1 span {
+  position: relative;
+  font-size: 0.3em;
+  top: -20px;
+}
+
+#simon-control-panel #simon-panel-row-1 {
+  display: flex;
+  padding: 0 2rem;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+#simon-control-panel .panel {
+  display: inline-block;
+  text-align: center;
+}
+
+#count-panel #count-box {
+  border: 0.4rem solid #424242;
+  border-radius: 1.2rem;
+  width: 6rem;
+  height: 3.5rem;
+  font-family: 'VT323', monospace;
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  text-align: center;
+  color: #F44336;
+  background: #370808;
+}
+
+#simon-control-panel .panel-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+#simon-control-panel .panel-button {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0.4rem solid #424242;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  cursor: pointer;
+  box-shadow: 0px 0px 1rem 0.1rem rgba(0,0,0,0.7);
+}
+
+#start-panel #start-button {
+  background: #F44336;
+}
+
+#strict-panel #strict-button {
+  background: #FFEB3B;
+}
+
+#strict-panel #strict-light {
+  width: 0.7rem;
+  height: 0.7rem;
+  margin: 0 auto 0.5rem auto;
+  border: 0.2rem solid #424242;
+  border-radius: 50%;
+  background: #370808;
+}
+
+#simon-control-panel #simon-panel-row-2 {
+  display: flex;
+  padding: 0 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+#simon-control-panel #simon-panel-row-2 .panel-label {
+  margin-top: 0;
+}
+
+#slider-container {
+  background: #424242;
+  width: 4rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+  border: 0.2rem solid #424242;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  position: relative;
+}
+
+#slider-container #slider {
+  position: absolute;
+  background: #03A9F4;
+  width: 2rem;
+  height: 2rem;
+  /*right: 0;*/
+  border-radius: 0.2rem;
+}
+
+footer {
+  font-family: 'Oswald', sans-serif;
+  margin-top: 10rem;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #424242;
+}
+
+a {
+  color: #03A9F4;
+  font-weight: bold;
+}
