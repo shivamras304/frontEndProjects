@@ -122,7 +122,10 @@ body {
   font-size: 3.5rem;
   line-height: 3.5rem;
   text-align: center;
-  color: #F44336;
+  /* Color for OFF state */
+  color: #5E0E0E;
+  /* Color for ON state
+  color: #F44336; */
   background: #370808;
 }
 
@@ -187,7 +190,8 @@ body {
   background: #03A9F4;
   width: 2rem;
   height: 2rem;
-  /*right: 0;*/
+  /* For ON State
+  right: 0; */
   border-radius: 0.2rem;
 }
 
