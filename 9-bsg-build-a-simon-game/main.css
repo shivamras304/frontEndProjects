@@ -38,7 +38,7 @@ body {
   padding: 2.6rem;
   box-sizing: border-box;
   border-radius: 50%;
-  box-shadow: 0px 0px 2rem 0.3rem rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 2rem 0.4rem rgba(0,0,0,0.7);
 }
 
 #simon-container .simon-cell {
@@ -142,7 +142,23 @@ body {
   border-radius: 50%;
   margin: 0 auto 1rem auto;
   cursor: pointer;
-  box-shadow: 0px 0px 1rem 0.1rem rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 1rem 0.2rem rgba(0,0,0,0.7);
+}
+
+@keyframes shadowPulse {
+  0% {
+  box-shadow: 0px 0px 1rem 0.2rem rgba(0,0,0,0.7);
+  }
+
+  100% {
+    box-shadow: none;
+  }
+}
+.shadow-pulse {
+    animation-name: shadowPulse;
+    animation-duration: 200ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
 }
 
 #start-panel #start-button {
