@@ -15,30 +15,29 @@ var Game = function(mode) {
    */
   this.sequence = [];
 
-  var repeatThisSequence = false;
+  this.repeatThisSequence = false;
 
   this.changeMode = function() {
     gameMode = gameMode === game.MODE_NORMAL ? Game.MODE_STRICT : Game.MODE_NORMAL;
   }
 
   this.isTerminal = function() {
-    return globals.game.sequence.length === 5;
+    return globals.game.sequence.length === 3;
   }
 
   this.advance = function() {
     // console.log("Game advanced!!")
     if(globals.game.isTerminal()) {
       ui.countboxAnimation("WIN");
-      // Restarts the game again after 1000ms
-      window.setTimeout(this.start, 1000);
+      // Restarts the game again after 3000ms
+      window.setTimeout(this.start, 3000);
     }
 
-    if(!repeatThisSequence) {
+    if(!globals.game.repeatThisSequence) {
       globals.game.sequence.push(Math.floor(Math.random()*4));
-      repeatThisSequence = false;
+    } else {
+      globals.game.repeatThisSequence = false;
     }
-
-    // ui.countboxAnimation(globals.game.sequence.length);
 
     ui.showSimonSequence();
   }
@@ -46,7 +45,7 @@ var Game = function(mode) {
   this.wrongSequence = function() {
     ui.countboxAnimation("ERROR");
     if(gameMode === Game.MODE_NORMAL) {
-      repeatThisSequence = true;
+      globals.game.repeatThisSequence = true;
       globals.game.advance();
     } else if(gameMode === Game.MODE_STRICT) {
       globals.game.start();

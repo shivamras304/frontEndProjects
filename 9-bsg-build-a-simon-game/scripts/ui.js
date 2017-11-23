@@ -108,31 +108,26 @@ var ui = {
   },
 
   showSimonSequence: function() {
-    var gap = 1400;
-    // if(globals.game.sequence.length < 7) {
-    //   gap = 1800;
-    // } else if(globals.game.sequence.length < 15) {
-    //   gap = 1600;
-    // } else {
-    //   gap = 1400;
-    // }
+    var gap;
+    if(globals.game.sequence.length < 7) {
+      gap = 1800;
+    } else if(globals.game.sequence.length < 15) {
+      gap = 1600;
+    } else {
+      gap = 1400;
+    }
 
     var simonCells = $("#simon-container .simon-cell");
-
-    console.log("Show Simon Sequence starts at: " + (new Date()).getTime());
     interval = window.setInterval(showSequence, gap);
     // console.log(interval)
     i = 0;
     function showSequence() {
-      console.log(`Show Sequence for ${i}:` + (new Date()).getTime());
       //TODO why was -1 chosen
       if(i === globals.game.sequence.length-1) {
         // By this time the last cell in the sequence would
         // have been activated and then we can clear the interval
         // and start listening for input
         window.setTimeout(function() {
-          console.log("Starting to listen for input at: " + (new Date()).getTime());
-          // console.log(interval);
           clearInterval(interval);
           ui.listenForInput();
         }, 1100);
@@ -153,27 +148,23 @@ var ui = {
     var simonCells = $("#simon-container .simon-cell");
     var ptr = 0;
     simonCells.css("cursor", "pointer");
-    console.log(simonCells)
+
     simonCells.on("click", function(e) {
-      // e.preventDefault();
-      // e.stopPropagation();
-      console.log(e);
-      console.log("Simon cell is clicked");
+
       cellNo = this.getAttribute("data-cell-no");
       //cell No is string hence == was used
       if(cellNo == globals.game.sequence[ptr]) {
           ptr++;
           ui.activateSimonCell($(this));
           if(ptr === globals.game.sequence.length) {
-            console.log("Game advanced");
-            globals.game.advance();
             simonCells.css("cursor", "default");
             simonCells.off("click");
+            globals.game.advance();
           }
       } else {
-        globals.game.wrongSequence();
         simonCells.css("cursor", "default");
         simonCells.off("click");
+        globals.game.wrongSequence();
       }
     });
   },
