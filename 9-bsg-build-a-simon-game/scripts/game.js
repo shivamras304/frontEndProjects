@@ -18,7 +18,7 @@ var Game = function(mode) {
   this.repeatThisSequence = false;
 
   this.changeMode = function() {
-    gameMode = gameMode === game.MODE_NORMAL ? Game.MODE_STRICT : Game.MODE_NORMAL;
+    gameMode = gameMode === Game.MODE_NORMAL ? Game.MODE_STRICT : Game.MODE_NORMAL;
   }
 
   this.isTerminal = function() {
@@ -27,10 +27,11 @@ var Game = function(mode) {
 
   this.advance = function() {
     // console.log("Game advanced!!")
-    if(globals.game.isTerminal()) {
+    if(globals.game.isTerminal() && !globals.game.repeatThisSequence) {
       ui.countboxAnimation("WIN");
       // Restarts the game again after 3000ms
       window.setTimeout(this.start, 3000);
+      return;
     }
 
     if(!globals.game.repeatThisSequence) {
@@ -57,6 +58,7 @@ var Game = function(mode) {
     // The following animation takes 400ms to run
     ui.countboxAnimation("START");
     globals.game.sequence = [];
+    globals.game.repeatThisSequence = false;
     //After 800ms the game will advance
     window.setTimeout(globals.game.advance, 800);
   }

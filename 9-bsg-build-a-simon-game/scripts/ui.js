@@ -27,7 +27,6 @@ var ui = {
 
       // Turns off the strict light
       ui.toggleStrictLight("OFF");
-      //TODO turn all simon cells back to original states
       $("#count-panel #count-box").text("--");
     }
   },
