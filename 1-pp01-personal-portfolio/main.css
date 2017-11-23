@@ -30,6 +30,7 @@
   height: 250px;
   overflow: hidden;
   margin: 0 auto;
+  padding: 0;
   border: black solid 2px;
 }
 .profile-pic img {
@@ -40,19 +41,57 @@
 }
 .portfolio-pic {
   width: 420px;
-  height: 280px;
+  height: 260px;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 20px 40px;
   border: black solid 2px;
+  padding: 0;
 }
 .portfolio-img img {
   width: 420px;
   height: auto;
   border: black solid 2px;
 }
+
+.img-caption {
+  text-align: center;;
+}
+
+.contact-msg {
+  font-size: 48px;
+  text-align: center;
+}
+
 .footer {
   background-color: blue;
+  text-align: center;
+  color: white;
 }
 input {
   display: block;
+  width: 100%;
+  padding: 20px;
+  margin: 20px auto;
+}
+textarea {
+  width: 100%;
+  padding: 20px;
+}
+
+.footer-heading {
+  font-size: 30px;
+}
+
+.footer-subheading {
+  font-size: 24px;
+}
+
+i.footer-subheading {
+  font-size: 30px;
+  color: white;
+  margin: 0 10px;
+}
+
+i.footer-subheading:hover {
+  color: grey;
 }

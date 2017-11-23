@@ -1,3 +1,8 @@
+// This portion of the code has been taken
+// from various online resources and stack overflow
+// I don't have the links for sources but I claim no
+// right over the following lines of code.
+
 //jQuery to collapse the navbar on scroll
 $(window).scroll(function() {
     if ($(".navbar").offset().top > 50) {
