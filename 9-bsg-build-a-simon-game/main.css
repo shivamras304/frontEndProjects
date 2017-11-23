@@ -46,24 +46,30 @@ body {
   background: yellow;
   width: 20.1rem;
   height: 20.1rem;
-  cursor: pointer;
 }
 
 #simon-container #simon-cell-0 {
   border-radius: 100% 0 0 0;
   background: #43A047;
+  /* Background Color when clicked:
+  background: #AAECAD; */
 }
 
 #simon-container #simon-cell-1 {
   right: 2.6rem;
   background: #AB1A1A;
+  /* Background Color when clicked:
+  background: #F77070;*/
   border-radius: 0 100% 0 0;
+
 }
 
 #simon-container #simon-cell-2 {
   right: 2.6rem;
   bottom: 2.6rem;
   background: #104F96;
+  /* Background Color when clicked:
+  background: #5C9BE2; */
   border-radius: 0 0 100% 0;
 }
 
@@ -71,6 +77,8 @@ body {
   bottom: 2.6rem;
   border-radius: 0 0 0 100%;
   background: #D1A026;
+  /* Background Color when clicked:
+  background: #D9B868; */
 }
 
 #simon-control-panel {

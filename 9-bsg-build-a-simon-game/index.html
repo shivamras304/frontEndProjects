@@ -10,10 +10,10 @@
 <body>
 
   <div id="simon-container">
-    <div id="simon-cell-0" class="simon-cell"></div>
-    <div id="simon-cell-1" class="simon-cell"></div>
-    <div id="simon-cell-2" class="simon-cell"></div>
-    <div id="simon-cell-3" class="simon-cell"></div>
+    <div id="simon-cell-0" class="simon-cell" data-cell-no="0"></div>
+    <div id="simon-cell-1" class="simon-cell" data-cell-no="1"></div>
+    <div id="simon-cell-2" class="simon-cell" data-cell-no="2"></div>
+    <div id="simon-cell-3" class="simon-cell" data-cell-no="3"></div>
 
     <div id="simon-control-panel">
       <h1>Simon<span>&reg;</span></h1>
@@ -43,10 +43,22 @@
   </div>
 
   <footer>
-      Designed &amp; coded By <a href="https://www.github.com/shivamras304" target="_blank">Shivam Rastogi</a>
-    </footer>
-  </div>
+    Designed &amp; coded By <a href="https://www.github.com/shivamras304" target="_blank">Shivam Rastogi</a>
+  </footer>
+
+  <!-- Sounds for the game -->
+  <audio id="sound-0" src="sounds/simon-sound-0.mp3" type="audio/mpeg"></audio>
+  <audio id="sound-1" src="sounds/simon-sound-1.mp3" type="audio/mpeg"></audio>
+  <audio id="sound-2" src="sounds/simon-sound-2.mp3" type="audio/mpeg"></audio>
+  <audio id="sound-3" src="sounds/simon-sound-3.mp3" type="audio/mpeg"></audio>
+  <audio id="sound-error" src="sounds/simon-error.mp3" type="audio/mpeg"></audio>
+  <audio id="sound-win" src="sounds/simon-win.mp3" type="audio/mpeg"></audio>
+  <audio id="sound-button" src="sounds/simon-button.mp3" type="audio/mpeg"></audio>
+  <audio id="sound-start" src="sounds/simon-start.mp3" type="audio/mpeg"></audio>
+
+
   <script src="scripts/jquery-3.2.1.min.js"></script>
+  <script src="scripts/jquery.color.min.js"></script>
   <script src="scripts/ui.js"></script>
   <script src="scripts/game.js"></script>
   <script src="scripts/flow.js"></script>
