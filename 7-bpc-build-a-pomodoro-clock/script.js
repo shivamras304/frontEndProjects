@@ -116,7 +116,7 @@ window.onload = function() {
     if (seconds < 60) {
       return seconds;
     } else if (seconds < 3600) {
-      mins = Math.round(seconds / 60);
+      mins = Math.floor(seconds / 60);
       seconds = seconds % 60;
       seconds = Math.round((seconds) * 100) / 100;
       if (seconds < 10) {
