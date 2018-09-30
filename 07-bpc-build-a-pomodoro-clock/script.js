@@ -116,22 +116,20 @@ window.onload = function() {
     if (seconds < 60) {
       return seconds;
     } else if (seconds < 3600) {
-      mins = Math.round(seconds / 60);
+      mins = Math.floor(seconds / 60);
       seconds = seconds % 60;
-      seconds = Math.round((seconds) * 100) / 100;
       if (seconds < 10) {
         seconds = "0" + seconds;
       }
       return mins + ":" + seconds;
     } else {
-      hours = Math.round(seconds / 3600);
+      hours = Math.floor(seconds / 3600);
       seconds = seconds % 3600;
-      mins = Math.round(seconds / 60);
+      mins = Math.floor(seconds / 60);
       if (mins < 10) {
         mins = "0" + mins;
       }
       seconds = seconds % 60;
-      seconds = Math.round((seconds) * 100) / 100;
       if (seconds < 10) {
         seconds = "0" + seconds;
       }
