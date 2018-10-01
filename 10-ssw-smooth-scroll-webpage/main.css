@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	/*background: black;*/
+	font-family: 'Ubuntu', sans-serif;
+}
+
+nav {
+	position: fixed;
+	padding: 20px;
+	right: 0px;
+}
+
+nav {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+}
+
+nav a {
+	list-style: none;
+	display: inline-block;
+	width: 50px;
+	text-align: center;
+	border: 1px solid rgba(0,0,0,0.5);
+	border-radius: 5px;
+	padding: 10px;
+	margin-left: 15px;
+	cursor: pointer;
+	font-weight: 900;
+	background: rgba(0,0,0,0.1);
+	color: black;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background: rgba(0,0,0,0.7);
+	color: white;
+}
+
+.nav-active {
+	background: rgba(0,0,0,0.7);
+	color: white;
+}
+
+.body-part1 {
+	background: blue url(images/bg1.jpg);
+}
+
+.body-part2 {
+	background: red url(images/bg2.jpg);
+}
+
+.body-part3 {
+	background: orange url(images/bg3.jpg);
+}
+
+.body-part4 {
+	background: green url(images/bg4.jpg);
+}
+
+.body-part5 {
+	background: white url(images/bg5.jpg);
+}
+
+.body-part6 {
+	background: lightblue url(images/bg6.jpg);
+}
+
+.body-part7 {
+	background: black url(images/bg7.jpg);
+}
+
+.body-part {
+	width: 100vw;
+	height: 100vh;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
