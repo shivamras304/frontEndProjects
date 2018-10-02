@@ -1,28 +1,54 @@
 $(document).ready(function(){
-  // Add smooth scrolling to all links
-  $("a").on('click', function(event) {
+  // Add smooth scrolling to all 
+  var bp1 = $("#bp1");
+  var bp2 = $("#bp2");
+  var bp3 = $("#bp3");
+  var bp4 = $("#bp4");
+  var bp5 = $("#bp5");
+  var bp6 = $("#bp6");
+  var bp7 = $("#bp7");
 
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
+  var navElement1 = $("#nav-element-1")
+  var navElement2 = $("#nav-element-2")
+  var navElement3 = $("#nav-element-3")
+  var navElement4 = $("#nav-element-4")
+  var navElement5 = $("#nav-element-5")
+  var navElement6 = $("#nav-element-6")
+  var navElement7 = $("#nav-element-7")
 
-      // Store hash
-      var hash = this.hash;
+  var activeNavElement = navElement1;
+  activeNavElement.addClass('active')
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
+  $(".bp-container").on('scroll', function(event) {
+
+    if (bp1.offset().top >= -window.innerHeight*0.4 && bp1.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement1) {
+      activeNavElement.removeClass('active');
+      activeNavElement = navElement1;
+      activeNavElement.addClass('active');
+    } else if (bp2.offset().top >= -window.innerHeight*0.4 && bp2.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement2) {
+      activeNavElement.removeClass('active');
+      activeNavElement = navElement2;
+      activeNavElement.addClass('active');
+    } else if (bp3.offset().top >= -window.innerHeight*0.4 && bp3.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement3) {
+      activeNavElement.removeClass('active');
+      activeNavElement = navElement3;
+      activeNavElement.addClass('active');
+    } else if (bp4.offset().top >= -window.innerHeight*0.4 && bp4.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement4) {
+      activeNavElement.removeClass('active');
+      activeNavElement = navElement4;
+      activeNavElement.addClass('active');
+    } else if (bp5.offset().top >= -window.innerHeight*0.4 && bp5.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement5) {
+      activeNavElement.removeClass('active');
+      activeNavElement = navElement5;
+      activeNavElement.addClass('active');
+    } else if (bp6.offset().top >= -window.innerHeight*0.4 && bp6.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement6) {
+      activeNavElement.removeClass('active');
+      activeNavElement = navElement6;
+      activeNavElement.addClass('active');
+    } else if (bp7.offset().top >= -window.innerHeight*0.4 && bp7.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement7) {
+      activeNavElement.removeClass('active');
+      activeNavElement = navElement7;
+      activeNavElement.addClass('active');
+    }
   });
-
-  $(window).on('scroll', function(event) {
-    console.log(event)
-  })
 });
