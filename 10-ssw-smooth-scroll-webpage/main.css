@@ -106,19 +106,20 @@ nav a:hover {
 	width: 50px;
 	height: 50px;
 	position: fixed;
-	bottom: 15px;
-	right: 15px;
-	transform: rotate(180deg);
+	bottom: -50px;
+	right: 0px;
+	transform: rotate(0deg);
 	opacity: 0.95;
-	transition: 0.5s all ease-in-out;
+	transition: 0.7s all ease-in-out;
 }
 
 .move-to-top:hover {
 	opacity: 1;
 }
 
-.move-out-of-window {
-	transform: rotate(-60deg);
-	bottom: -50px;
+.move-into-window {
+	transform: rotate(180deg);
+	bottom: 15px;
+	right: 15px;
 	transition: 0.7s all ease-in-out;
 }

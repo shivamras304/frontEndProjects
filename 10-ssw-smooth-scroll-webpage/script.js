@@ -20,7 +20,7 @@ $(document).ready(function(){
   moveToTop.addClass("move-out-of-window");
 
   var activeNavElement = navElement1;
-  activeNavElement.addClass('active')
+  activeNavElement.addClass('active');
 
   $(".bp-container").on('scroll', function(event) {
 
@@ -28,12 +28,12 @@ $(document).ready(function(){
       activeNavElement.removeClass('active');
       activeNavElement = navElement1;
       activeNavElement.addClass('active');
-      moveToTop.addClass("move-out-of-window");
+      moveToTop.removeClass("move-into-window");
     } else if (bp2.offset().top >= -window.innerHeight*0.4 && bp2.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement2) {
       activeNavElement.removeClass('active');
       activeNavElement = navElement2;
       activeNavElement.addClass('active');
-      moveToTop.removeClass("move-out-of-window");
+      moveToTop.addClass("move-into-window");
     } else if (bp3.offset().top >= -window.innerHeight*0.4 && bp3.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement3) {
       activeNavElement.removeClass('active');
       activeNavElement = navElement3;
