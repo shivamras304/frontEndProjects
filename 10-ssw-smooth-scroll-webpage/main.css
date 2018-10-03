@@ -110,8 +110,15 @@ nav a:hover {
 	right: 15px;
 	transform: rotate(180deg);
 	opacity: 0.95;
+	transition: 0.5s all ease-in-out;
 }
 
 .move-to-top:hover {
 	opacity: 1;
+}
+
+.move-out-of-window {
+	transform: rotate(-60deg);
+	bottom: -50px;
+	transition: 0.7s all ease-in-out;
 }
