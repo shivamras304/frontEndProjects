@@ -16,6 +16,9 @@ $(document).ready(function(){
   var navElement6 = $("#nav-element-6")
   var navElement7 = $("#nav-element-7")
 
+  var moveToTop = $("#move-to-top")
+  moveToTop.hide();
+
   var activeNavElement = navElement1;
   activeNavElement.addClass('active')
 
@@ -25,10 +28,12 @@ $(document).ready(function(){
       activeNavElement.removeClass('active');
       activeNavElement = navElement1;
       activeNavElement.addClass('active');
+      moveToTop.hide();
     } else if (bp2.offset().top >= -window.innerHeight*0.4 && bp2.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement2) {
       activeNavElement.removeClass('active');
       activeNavElement = navElement2;
       activeNavElement.addClass('active');
+      moveToTop.show();
     } else if (bp3.offset().top >= -window.innerHeight*0.4 && bp3.offset().top <= window.innerHeight*0.6 && activeNavElement !== navElement3) {
       activeNavElement.removeClass('active');
       activeNavElement = navElement3;

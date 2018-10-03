@@ -92,3 +92,26 @@ nav a:hover {
     background-size: cover;
     scroll-snap-align: start; /* For snappy scroll */
 }
+
+.move-to-top {
+	text-decoration: none;
+	font-size: 36px;
+	font-weight: 900;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 50%;
+	color: white;
+	background-color: orange;
+	display: block;
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	transform: rotate(180deg);
+	opacity: 0.95;
+}
+
+.move-to-top:hover {
+	opacity: 1;
+}
