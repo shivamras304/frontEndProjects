@@ -1,16 +1,46 @@
 import React, { Component } from 'react'
 import styles from './index.module.css'
-import gridGenerator from '../../utils/gridGenerator'
+import { getGridDimensions, getGrid, getFoodCell, getInitialSnake } from '../../game/gameSetup'
 
 
 class Board extends Component {
 
   state = {
-    grid: gridGenerator(12,20)
+    grid: getGrid(),
+    mRows: getGridDimensions().mRows,
+    nCols: getGridDimensions().nCols,
+    foodCell: getFoodCell(),
+    snake: getInitialSnake()
   }
 
   render() {
-    let grid = this.state.grid.map((gridRow, index) => {
+    console.log('foodcell',this.state.foodCell)
+    console.log('cols',this.state.nCols)
+    console.log(Math.floor(this.state.foodCell / this.state.nCols));
+    console.log(Math.floor(this.state.foodCell % this.state.nCols));
+    console.log('gridele',this.state.grid[
+      Math.floor(this.state.foodCell / this.state.nCols)
+    ][
+      Math.floor(this.state.foodCell % this.state.nCols)
+    ].value);
+    
+    let gridArray = this.state.grid
+    gridArray[
+      Math.floor(this.state.foodCell / this.state.nCols)
+    ][
+      Math.floor(this.state.foodCell % this.state.nCols)
+    ].isFood = true
+
+    console.log(this.state.snake)
+    for(const cell of this.state.snake) {
+      gridArray[
+        Math.floor(cell / this.state.nCols)
+      ][
+        Math.floor(cell % this.state.nCols)
+      ].isFood = true
+    }
+    
+    let grid = gridArray.map((gridRow, index) => {
       return (
         <div 
           key={index}
