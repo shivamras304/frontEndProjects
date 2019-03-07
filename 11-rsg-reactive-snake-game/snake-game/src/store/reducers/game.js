@@ -15,6 +15,7 @@ const gameStart = (state, action) => {
   return updateObject(state, {
     mRows: action.mRows,
     nCols: action.nCols,
+    grid: action.grid,
     foodCell: action.foodCell,
     snake: action.snake
   })
