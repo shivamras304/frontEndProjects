@@ -1,3 +1,3 @@
 export {
-  gameStart
+  gameReady
 } from './game'

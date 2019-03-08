@@ -3,6 +3,7 @@ import updateObject from '../../utils/updateObject'
 import * as constants from '../../utils/constants'
 
 const initialState = {
+  gameState: constants.GAME_NULL,
   mRows: null,
   nCols: null,
   grid: null,
@@ -11,8 +12,9 @@ const initialState = {
   direction: constants.UP,
 }
 
-const gameStart = (state, action) => {
+const gameReady = (state, action) => {
   return updateObject(state, {
+    gameState: constants.GAME_READY,
     mRows: action.mRows,
     nCols: action.nCols,
     grid: action.grid,
@@ -23,7 +25,7 @@ const gameStart = (state, action) => {
 
 const reducer = (state=initialState, action) => {
   switch(action.type) {
-    case actionTypes.GAME_START: return gameStart(state, action)
+    case actionTypes.GAME_READY: return gameReady(state, action)
     default: return state
   }
 }

@@ -23,6 +23,10 @@
   background: lightcoral;
 }
 
+.Cell[data-snake="true"] {
+  background: darkblue;
+}
+
 @media only screen and (max-width: 900px) {
   .Board {
     padding: 13px 10px 10px 13px;

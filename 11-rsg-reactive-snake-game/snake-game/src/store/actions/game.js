@@ -1,8 +1,8 @@
 import * as actionTypes from './actionTypes'
 
-export const gameStart = (payload) => {
+export const gameReady = (payload) => {
   return {
-    type: actionTypes.GAME_START,
+    type: actionTypes.GAME_READY,
     ...payload
   }
 }
