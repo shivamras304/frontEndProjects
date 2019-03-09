@@ -28,10 +28,10 @@ export const gameOver = (payload) => {
   }
 }
 
-export const moveSnake = (snake) => {
+export const moveSnake = (payload) => {
   return {
     type: actionTypes.MOVE_SNAKE,
-    snake: snake
+    ...payload
   }
 }
 

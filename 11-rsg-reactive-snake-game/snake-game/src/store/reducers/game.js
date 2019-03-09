@@ -60,9 +60,13 @@ const gameOver = (state, action) => {
 }
 
 const moveSnake = (state, action) => {
-  return updateObject(state, {
+  let toUpdateProperties = {
     snake: action.snake
-  })
+  }
+  if (action.foodCell) {
+    toUpdateProperties.foodCell = action.foodCell
+  }
+  return updateObject(state, toUpdateProperties)
 }
 
 const changeSnakeDirection = (state, action) => {
