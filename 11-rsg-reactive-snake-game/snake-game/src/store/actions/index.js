@@ -4,5 +4,6 @@ export {
   gamePaused,
   gameOver,
   moveSnake,
-  changeSnakeDirection
+  changeSnakeDirection,
+  eatFood
 } from './game'

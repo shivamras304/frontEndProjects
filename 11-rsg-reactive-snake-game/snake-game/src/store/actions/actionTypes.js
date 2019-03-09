@@ -5,3 +5,4 @@ export const GAME_OVER = 'GAME_OVER'
 
 export const MOVE_SNAKE = 'MOVE_SNAKE'
 export const CHANGE_SNAKE_DIRECTION = 'CHANGE_SNAKE_DIRECTION'
+export const EAT_FOOD = 'EAT_FOOD'

@@ -28,10 +28,10 @@ export const gameOver = (payload) => {
   }
 }
 
-export const moveSnake = (payload) => {
+export const moveSnake = (snake) => {
   return {
     type: actionTypes.MOVE_SNAKE,
-    ...payload
+    snake: snake
   }
 }
 
@@ -39,5 +39,12 @@ export const changeSnakeDirection = (direction) => {
   return {
     type: actionTypes.CHANGE_SNAKE_DIRECTION,
     direction: direction
+  }
+}
+
+export const eatFood = ({snake, foodCell}) => {
+  return {
+    type: actionTypes.EAT_FOOD,
+    snake, foodCell
   }
 }

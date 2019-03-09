@@ -33,21 +33,42 @@ class Game extends Component {
     }
   }
 
-  changeSnakeDirectionHandler = (event) => {
-    // TODO: Don't forget to add this condition in the next implementation of 
-    // change direction interface
-    if (this.props.direction === event.target.innerText) {
-      return
-    }
-    switch(event.target.innerText) {
-      case constants.UP: this.props.onChangeSnakeDirection(constants.UP) 
-                            break;
-      case constants.DOWN: this.props.onChangeSnakeDirection(constants.DOWN) 
-                            break;
-      case constants.LEFT: this.props.onChangeSnakeDirection(constants.LEFT) 
-                            break;
-      case constants.RIGHT: this.props.onChangeSnakeDirection(constants.RIGHT) 
-                            break;
+  keyDownHandler = (event) => {
+    event.preventDefault()
+    
+    switch (event.which) {
+      case 32: // Spacebar is pressed
+        if (this.props.gameState === constants.GAME_PAUSED
+           || this.props.gameState === constants.GAME_READY) {
+          this.props.onGamePlaying()
+        } else if (this.props.gameState === constants.GAME_PLAYING) {
+          this.props.onGamePaused()
+        }
+        break;
+      case 37: // Left Arrow key is pressed
+        if (this.props.direction === constants.UP
+          || this.props.direction === constants.DOWN) {
+          this.props.onChangeSnakeDirection(constants.LEFT)
+        }
+        break;
+      case 38: // Up Arrow key is pressed
+        if (this.props.direction === constants.LEFT
+          || this.props.direction === constants.RIGHT) {
+          this.props.onChangeSnakeDirection(constants.UP)
+        }
+        break;
+      case 39: // Right Arrow key is pressed
+        if (this.props.direction === constants.UP
+          || this.props.direction === constants.DOWN) {
+          this.props.onChangeSnakeDirection(constants.RIGHT)
+        }
+        break;
+      case 40: // Down Arrow key is pressed
+        if (this.props.direction === constants.LEFT
+          || this.props.direction === constants.RIGHT) {
+          this.props.onChangeSnakeDirection(constants.DOWN)
+        }
+        break;
       default: return
     }
   }
@@ -62,17 +83,14 @@ class Game extends Component {
     }
 
     return (
-      <div>
+      <div onKeyDown={this.keyDownHandler}>
         {board}
+        <div>Score: {this.props.score}</div>
         <br/>
         <button data-state={constants.GAME_PLAYING} className={styles.Button} onClick={this.changeGameStateHandler}>Play Game</button>
         <button data-state={constants.GAME_PAUSED} className={styles.Button} onClick={this.changeGameStateHandler}>Pause Game</button>
         <button data-state={constants.GAME_OVER} className={styles.Button} onClick={this.changeGameStateHandler}>Finish Game</button>
         <br/>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.UP}</button>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.DOWN}</button>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.LEFT}</button>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.RIGHT}</button>
       </div>
     )
   }
@@ -80,13 +98,14 @@ class Game extends Component {
 
 const mapStateToProps = state => {
   return {
-    gameState: state.game.state,
+    gameState: state.game.gameState,
     mRows: state.game.mRows,
     nCols: state.game.nCols,
     grid: state.game.grid,
     foodCell: state.game.foodCell,
     snake: state.game.snake,
-    direction: state.game.direction
+    direction: state.game.direction,
+    score: state.game.score
   }
 }
 
