@@ -1,4 +1,7 @@
 export const GAME_READY = 'GAME_READY'
-export const GAME_START = 'GAME_START'
+export const GAME_PLAYING = 'GAME_PLAYING'
+export const GAME_PAUSED = 'GAME_PAUSED'
+export const GAME_OVER = 'GAME_OVER'
+
 export const MOVE_SNAKE = 'MOVE_SNAKE'
 export const CHANGE_SNAKE_DIRECTION = 'CHANGE_SNAKE_DIRECTION'

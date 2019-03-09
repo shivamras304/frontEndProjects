@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styles from './index.module.css'
 import { connect } from 'react-redux'
 import Board from '../../components/Board'
-import { moveSnake } from '../../game/moveSnake'
 import { getGridDimensions, getGrid, getFoodCell, getInitialSnake } from '../../game/gameSetup'
 import * as constants from '../../utils/constants'
 import * as actions from '../../store/actions'
@@ -20,14 +19,26 @@ class Game extends Component {
     })
   }
 
-  changeGameStateHandler = () => {
-    setInterval(() => {
-      console.log('Start game called');
-      moveSnake()
-    }, 300)
+  changeGameStateHandler = (event) => {
+
+    switch (event.target.dataset.state) {
+      case constants.GAME_PLAYING: this.props.onGamePlaying() 
+        break;
+      case constants.GAME_PAUSED: this.props.onGamePaused() 
+        break;
+      case constants.GAME_OVER: this.props.onGameOver() 
+        break;
+      default:
+        return
+    }
   }
 
   changeSnakeDirectionHandler = (event) => {
+    // TODO: Don't forget to add this condition in the next implementation of 
+    // change direction interface
+    if (this.props.direction === event.target.innerText) {
+      return
+    }
     switch(event.target.innerText) {
       case constants.UP: this.props.onChangeSnakeDirection(constants.UP) 
                             break;
@@ -37,7 +48,7 @@ class Game extends Component {
                             break;
       case constants.RIGHT: this.props.onChangeSnakeDirection(constants.RIGHT) 
                             break;
-      default: console.log('matche default')
+      default: return
     }
   }
 
@@ -54,9 +65,9 @@ class Game extends Component {
       <div>
         {board}
         <br/>
-        <button className={styles.Button} onClick={this.changeGameStateHandler}>Start Game</button>
-        <button className={styles.Button} onClick={this.changeGameStateHandler}>Pause Game</button>
-        <button className={styles.Button} onClick={this.changeGameStateHandler}>Finish Game</button>
+        <button data-state={constants.GAME_PLAYING} className={styles.Button} onClick={this.changeGameStateHandler}>Play Game</button>
+        <button data-state={constants.GAME_PAUSED} className={styles.Button} onClick={this.changeGameStateHandler}>Pause Game</button>
+        <button data-state={constants.GAME_OVER} className={styles.Button} onClick={this.changeGameStateHandler}>Finish Game</button>
         <br/>
         <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.UP}</button>
         <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.DOWN}</button>
@@ -82,6 +93,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGameReady: (payload) => dispatch(actions.gameReady(payload)),
+    onGamePlaying: (payload) => dispatch(actions.gamePlaying(payload)),
+    onGamePaused: (payload) => dispatch(actions.gamePaused(payload)),
     onChangeSnakeDirection: (direction) => dispatch(actions.changeSnakeDirection(direction))
   }
 }
