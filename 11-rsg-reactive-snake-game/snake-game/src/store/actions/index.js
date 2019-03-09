@@ -1,4 +1,5 @@
 export {
   gameReady,
-  moveSnake
+  moveSnake,
+  changeSnakeDirection
 } from './game'

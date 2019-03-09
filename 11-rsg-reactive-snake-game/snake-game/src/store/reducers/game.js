@@ -29,10 +29,17 @@ const moveSnake = (state, action) => {
   })
 }
 
+const changeSnakeDirection = (state, action) => {
+  return updateObject(state, {
+    direction: action.direction
+  })
+}
+
 const reducer = (state=initialState, action) => {
   switch(action.type) {
     case actionTypes.GAME_READY: return gameReady(state, action)
     case actionTypes.MOVE_SNAKE: return moveSnake(state, action)
+    case actionTypes.CHANGE_SNAKE_DIRECTION: return changeSnakeDirection(state, action)
     default: return state
   }
 }

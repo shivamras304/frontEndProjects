@@ -13,3 +13,10 @@ export const moveSnake = (snake) => {
     snake: snake
   }
 }
+
+export const changeSnakeDirection = (direction) => {
+  return {
+    type: actionTypes.CHANGE_SNAKE_DIRECTION,
+    direction: direction
+  }
+}

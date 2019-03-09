@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styles from './index.module.css'
 import { connect } from 'react-redux'
 import Board from '../../components/Board'
-import { startGame } from '../../game/startGame'
+import { moveSnake } from '../../game/moveSnake'
 import { getGridDimensions, getGrid, getFoodCell, getInitialSnake } from '../../game/gameSetup'
 import * as constants from '../../utils/constants'
 import * as actions from '../../store/actions'
@@ -15,7 +15,7 @@ class Game extends Component {
     const foodCell = getFoodCell()
     const snake = getInitialSnake()
 
-    this.props.gameReady({
+    this.props.onGameReady({
       mRows, nCols, grid, foodCell, snake
     })
   }
@@ -23,8 +23,22 @@ class Game extends Component {
   changeGameStateHandler = () => {
     setInterval(() => {
       console.log('Start game called');
-      startGame()
+      moveSnake()
     }, 300)
+  }
+
+  changeSnakeDirectionHandler = (event) => {
+    switch(event.target.innerText) {
+      case constants.UP: this.props.onChangeSnakeDirection(constants.UP) 
+                            break;
+      case constants.DOWN: this.props.onChangeSnakeDirection(constants.DOWN) 
+                            break;
+      case constants.LEFT: this.props.onChangeSnakeDirection(constants.LEFT) 
+                            break;
+      case constants.RIGHT: this.props.onChangeSnakeDirection(constants.RIGHT) 
+                            break;
+      default: console.log('matche default')
+    }
   }
 
   render() {
@@ -44,10 +58,10 @@ class Game extends Component {
         <button className={styles.Button} onClick={this.changeGameStateHandler}>Pause Game</button>
         <button className={styles.Button} onClick={this.changeGameStateHandler}>Finish Game</button>
         <br/>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>Up</button>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>Down</button>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>Left</button>
-        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>Right</button>
+        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.UP}</button>
+        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.DOWN}</button>
+        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.LEFT}</button>
+        <button className={styles.Button} onClick={this.changeSnakeDirectionHandler}>{constants.RIGHT}</button>
       </div>
     )
   }
@@ -67,7 +81,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    gameReady: (payload) => dispatch(actions.gameReady(payload))
+    onGameReady: (payload) => dispatch(actions.gameReady(payload)),
+    onChangeSnakeDirection: (direction) => dispatch(actions.changeSnakeDirection(direction))
   }
 }
 
