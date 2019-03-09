@@ -28,10 +28,10 @@ const getGrid = () => {
       let cellValue = i*nCols + j
       let cell = {
         value: cellValue,
-        up: verifyValue(cellValue - nCols, 'up'),
-        down: verifyValue(cellValue + nCols, 'down'),
-        left: verifyValue(cellValue - 1, 'left'),
-        right: verifyValue(cellValue + 1, 'right'),
+        [constants.UP]: verifyValue(cellValue - nCols, constants.UP),
+        [constants.DOWN]: verifyValue(cellValue + nCols, constants.DOWN),
+        [constants.LEFT]: verifyValue(cellValue - 1, constants.LEFT),
+        [constants.RIGHT]: verifyValue(cellValue + 1, constants.RIGHT),
       }
       grid[i].push(cell)
     }
@@ -42,10 +42,10 @@ const getGrid = () => {
 
 const verifyValue = (value, direction) => {
   switch (direction) {
-    case 'up': return value < 0 ? constants.GRID_INVALID : value
-    case 'down': return value >= (mRows * nCols) ? constants.GRID_INVALID : value
-    case 'left': return (value + 1) % nCols === 0 ? constants.GRID_INVALID : value
-    case 'right': return value % nCols === 0 ? constants.GRID_INVALID : value
+    case constants.UP: return value < 0 ? constants.GRID_INVALID : value
+    case constants.DOWN: return value >= (mRows * nCols) ? constants.GRID_INVALID : value
+    case constants.LEFT: return (value + 1) % nCols === 0 ? constants.GRID_INVALID : value
+    case constants.RIGHT: return value % nCols === 0 ? constants.GRID_INVALID : value
     default: return constants.GRID_INVALID
   }
 }

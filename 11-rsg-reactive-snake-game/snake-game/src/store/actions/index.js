@@ -1,3 +1,4 @@
 export {
-  gameReady
+  gameReady,
+  moveSnake
 } from './game'

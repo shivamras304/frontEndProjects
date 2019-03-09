@@ -6,3 +6,10 @@ export const gameReady = (payload) => {
     ...payload
   }
 }
+
+export const moveSnake = (snake) => {
+  return {
+    type: actionTypes.MOVE_SNAKE,
+    snake: snake
+  }
+}

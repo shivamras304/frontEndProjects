@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './index.module.css'
 
 const board = props => {
-
+  
   let gameGrid = null
   if(props.grid) {
     gameGrid = (
@@ -17,8 +17,8 @@ const board = props => {
                   key={gridCell.value} 
                   className={styles.Cell} 
                   data-val={gridCell.value} 
-                  data-food={gridCell.isFood}
-                  data-snake={gridCell.isSnake}></div>
+                  data-food={props.foodCell === gridCell.value}
+                  data-snake={props.snake.indexOf(gridCell.value) !== -1}></div>
               )
             })}
           </div>

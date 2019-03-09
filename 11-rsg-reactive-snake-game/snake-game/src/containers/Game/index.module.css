@@ -1,0 +1,11 @@
+.Button {
+  padding: 12px;
+  margin: 8px;
+  background: lightgreen;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.Button:hover {
+  background: greenyellow;
+}

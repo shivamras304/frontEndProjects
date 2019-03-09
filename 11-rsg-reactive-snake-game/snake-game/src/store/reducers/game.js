@@ -23,9 +23,16 @@ const gameReady = (state, action) => {
   })
 }
 
+const moveSnake = (state, action) => {
+  return updateObject(state, {
+    snake: action.snake
+  })
+}
+
 const reducer = (state=initialState, action) => {
   switch(action.type) {
     case actionTypes.GAME_READY: return gameReady(state, action)
+    case actionTypes.MOVE_SNAKE: return moveSnake(state, action)
     default: return state
   }
 }
