@@ -12,7 +12,9 @@ const initialState = {
   snake: null,
   direction: constants.UP,
   freezeSnake: null,
-  snakeSpeed: 500
+  snakeSpeed: 200,
+  score: 0,
+  scoreAdder: 5
 }
 
 const gameReady = (state, action) => {
@@ -23,12 +25,12 @@ const gameReady = (state, action) => {
     grid: action.grid,
     foodCell: action.foodCell,
     snake: action.snake,
-    score: constants.SCORE_BASE
+    score: 0
   })
 }
 
 const gamePlaying = (state, action) => {
-  
+
   const freezeSnake = setInterval(() => {
     moveSnakeHelper()
   }, state.snakeSpeed)
@@ -76,10 +78,32 @@ const changeSnakeDirection = (state, action) => {
 }
 
 const eatFood = (state, action) => {
+  // Eating a food requires to generate a new food cell and update score
   return updateObject(state, {
-    snake: action.snake,
     foodCell: action.foodCell,
-    score: state.score + constants.SCORE_ADDER
+    score: state.score + state.scoreAdder
+  })
+}
+
+const levelUp = (state, action) => {
+  // Defining the logic for levelling up
+
+  // Decrease the timesInMillis (Increasing speed) by 50 points
+  const snakeSpeed = state.snakeSpeed > 50 ? state.snakeSpeed - 50 : state.snakeSpeed
+
+  // Increase the adder for score
+  const scoreAdder = state.scoreAdder + 5
+
+  clearInterval(state.freezeSnake)
+
+  const freezeSnake = setInterval(() => {
+    moveSnakeHelper()
+  }, snakeSpeed)
+  
+  return updateObject(state, {
+    snakeSpeed,
+    scoreAdder,
+    freezeSnake
   })
 }
 
@@ -92,6 +116,7 @@ const reducer = (state=initialState, action) => {
     case actionTypes.MOVE_SNAKE: return moveSnake(state, action)
     case actionTypes.CHANGE_SNAKE_DIRECTION: return changeSnakeDirection(state, action)
     case actionTypes.EAT_FOOD: return eatFood(state, action)
+    case actionTypes.LEVEL_UP: return levelUp(state, action)
     default: return state
   }
 }

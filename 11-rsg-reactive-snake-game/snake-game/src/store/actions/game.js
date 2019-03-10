@@ -42,9 +42,15 @@ export const changeSnakeDirection = (direction) => {
   }
 }
 
-export const eatFood = ({snake, foodCell}) => {
+export const eatFood = (foodCell) => {
   return {
     type: actionTypes.EAT_FOOD,
-    snake, foodCell
+    foodCell: foodCell
+  }
+}
+
+export const levelUp = () => {
+  return {
+    type: actionTypes.LEVEL_UP
   }
 }

@@ -5,5 +5,6 @@ export {
   gameOver,
   moveSnake,
   changeSnakeDirection,
-  eatFood
+  eatFood,
+  levelUp
 } from './game'

@@ -36,6 +36,11 @@ class Game extends Component {
   keyDownHandler = (event) => {
     event.preventDefault()
     
+    // Arrow keys should work only when the game is in playing mode
+    if (event.which !== 32 && this.props.gameState !== constants.GAME_PLAYING) {
+      return;
+    }
+
     switch (event.which) {
       case 32: // Spacebar is pressed
         if (this.props.gameState === constants.GAME_PAUSED

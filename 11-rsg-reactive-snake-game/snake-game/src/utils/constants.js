@@ -15,6 +15,3 @@ export const GAME_READY = 'GAME_READY'
 export const GAME_PLAYING = 'GAME_PLAYING'
 export const GAME_PAUSED = 'GAME_PAUSED'
 export const GAME_OVER = 'GAME_OVER'
-
-export const SCORE_BASE = 0
-export const SCORE_ADDER = 5
