@@ -1,8 +1,9 @@
 import * as actionTypes from './actionTypes'
 
-export const authSuccessful = () => {
+export const authSuccessful = (user) => {
   return {
-    type: actionTypes.AUTH_SUCCESSFUL
+    type: actionTypes.AUTH_SUCCESSFUL,
+    user: user
   }
 }
 

@@ -16,7 +16,7 @@ class Auth extends Component {
   // Configure FirebaseUI.
   uiConfig = {
     // Popup signin flow rather than redirect flow.
-    signInFlow: 'redirect',
+    signInFlow: 'popup',
     // Redirect to / after sign in is successful. Alternatively you can provide a 
     // callbacks.signInSuccessWithAuthResult function.
     signInSuccessUrl: '/',
@@ -34,7 +34,9 @@ class Auth extends Component {
   componentDidMount() {
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          this.props.onAuthSuccessful(user.providerData[0])
+          user = user.providerData[0]
+          delete user.phoneNumber
+          this.props.onAuthSuccessful(user)
         } else {
           this.props.onAuthFailed()
         }

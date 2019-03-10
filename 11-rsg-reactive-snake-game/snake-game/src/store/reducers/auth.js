@@ -8,7 +8,8 @@ const initialState = {
 
 const authSuccessful = (state, action) => {
   return updateObject(state, {
-    isSignedIn: true
+    isSignedIn: true,
+    user: action.user
   })
 }
 
