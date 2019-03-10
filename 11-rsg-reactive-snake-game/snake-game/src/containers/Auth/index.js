@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './index.module.css'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 
 firebase.initializeApp({
@@ -27,7 +28,7 @@ class Auth extends Component {
     ],
     // Update this if needed
     callbacks: {
-      signInSuccess: () => false
+      signInSuccessWithAuthResult: () => false
     }
   };
 
