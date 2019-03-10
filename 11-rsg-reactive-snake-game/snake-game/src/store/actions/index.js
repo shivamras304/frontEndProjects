@@ -8,3 +8,9 @@ export {
   eatFood,
   levelUp
 } from './game'
+
+export {
+  authSuccessful,
+  authFailed,
+  authLogout
+} from './auth'
