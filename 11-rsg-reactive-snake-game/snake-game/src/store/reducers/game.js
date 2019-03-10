@@ -12,7 +12,7 @@ const initialState = {
   snake: null,
   direction: constants.UP,
   freezeSnake: null,
-  snakeSpeed: 200,
+  snakeSpeed: 500,
   score: 0,
   scoreAdder: 5
 }
