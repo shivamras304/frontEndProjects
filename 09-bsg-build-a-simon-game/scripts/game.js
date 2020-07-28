@@ -11,7 +11,7 @@ var Game = function(mode) {
 
   /*
    * public [Array]: The sequence of simon cells for the game
-   * Max length of array = 20 as the game terminates when the user guesses 20 cells
+   * Max length of array = 10 as the game terminates when the user guesses 10 cells
    */
   this.sequence = [];
 
@@ -22,7 +22,7 @@ var Game = function(mode) {
   }
 
   this.isTerminal = function() {
-    return globals.game.sequence.length === 3;
+    return globals.game.sequence.length === 10;
   }
 
   this.advance = function() {
