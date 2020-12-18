@@ -1,6 +1,6 @@
 # Front End Projects
 
-Collection of projects completed as part of the (FreeCodeCamp Frontend Developer Certification)[https://www.freecodecamp.org/certification/shivamras304/legacy-front-end]
+Collection of projects completed as part of the [FreeCodeCamp Frontend Developer Certification](https://www.freecodecamp.org/certification/shivamras304/legacy-front-end)
 
 The following apps were made to meet the requirements set by FreeCodeCamp with personal creativity added to it.
 
